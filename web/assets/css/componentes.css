@@ -1,0 +1,279 @@
+
+/*
+    BOTÃO
+*/
+
+.botao {
+    display: inline-block;
+    padding: 0.8em 1.2em;
+    border: none;
+
+    color: #fff;
+    background-color: #bbb;
+    
+    line-height: normal;
+    text-decoration: none;
+}
+
+.botao--simples {
+    background-color: #bbb;
+    font-size: 1rem;
+    /* color: black; */
+
+    border-radius: 10px;
+}
+
+.botao:hover, .botao:focus {
+    background-color: #aaa;
+    color: #fff;
+
+    text-decoration: none;
+}
+
+.botao--pesquisar, .botao--principal {
+    background-color: #005e8a;
+
+    border-radius: 10px;
+    /* margin-bottom: 10px; */
+}
+
+.botao--pesquisar:hover, .botao--pesquisar:focus
+.botao--principal:hover, .botao--principal:focus {
+    background-color: #003b6a;
+}
+
+.botao--deletar {
+    background-color: red;
+    font-size: 1rem;
+    /* color: black; */
+
+    border-radius: 10px;
+}
+
+.botao--deletar:hover, .botao--deletar:focus {
+    background-color: rgb(216, 0, 0);
+}
+
+ .botao--adicionar {
+    background-color: #0e6400 ;
+    
+
+    border-radius: 10px;
+}
+
+.botao--adicionar:hover, .botao--adicionar:focus {
+    background-color: #0d4405;
+}
+
+.botao--alterar {
+    background-color: #ffd700 ;
+    font-size: 1rem;
+    color: black;
+    
+
+    border-radius: 10px;
+}
+
+.botao--alterar:hover, .botao--alterar:focus {
+    background-color: #fde910;
+    color: black;
+}
+
+.botao--dependente {
+    display: inline-block;
+    padding: 0.2em 3em;
+    border: none;
+
+    color: #fff;
+    background-color: #bbb;
+    margin: 20px 0;
+    line-height: none;
+    text-decoration: none;
+}
+
+/* #DE2323 */
+/*
+    NAVEGAÇÃO
+*/
+
+.navegacao--cadastro {
+    text-align: center;
+}
+
+.navegacao__menu {
+    float: center;
+}
+
+.navegacao__menu2 {
+    float: right;
+}
+
+
+/*
+    BOTAO-CHAVEADOR
+*/
+
+.botao-chaveador {
+    width: 24px;
+    height: 24px;
+    border: 0;
+
+    background: none;
+    background-image: url("../img/bars.png");
+
+    outline: none;
+}
+
+@media (min-width: 992px){
+    .botao-chaveador {
+        display: none;
+    }
+}
+
+/*
+    MENU
+*/
+
+.menu {
+    margin: 0;
+
+    font-size: 1.4rem;
+
+    list-style: none;
+}
+
+@media (max-width: 991px){
+    .menu {
+        position: fixed;
+        top: 0;
+        left: 0;
+        bottom: 0;
+    
+        display: none;
+        width: 200px;
+        padding: 20px;
+        border-right: 1px solid #eee;
+    
+        background-color: #fbfbfb;
+    }
+
+    .menu--exibindo {
+        display: block;
+    }
+
+    .menu__item {
+        display: block;
+    
+        line-height: 3;
+    }
+    
+    .menu__item--botao {
+        margin-top: 20px;
+    }
+}
+
+
+@media (min-width: 992px) {
+    .menu__item{
+        display: inline-block;
+        padding-right: 20px;
+    }
+
+    .menu__item:last-of-type {
+        padding-right: 0px;
+    }
+}
+
+/*
+    TITULO FORMULARIO
+*/
+
+.titulo-formulario {
+    margin: 0;
+    margin-bottom: 40px;
+
+    border-bottom: 1px solid #ccc;
+
+    font-size: 2.8rem;
+    font-weight: bold;
+    color: #004b86;
+}
+
+.titulo-menu {
+    margin: 0;
+    margin-bottom: 40px;
+
+    /* border-bottom: 1px solid #ccc; */
+
+    font-size: 2rem;
+    font-weight: bold;
+    color: #004b86;
+}
+
+.titulo-formulario--sem-borda {
+    margin: 0;
+    margin-bottom: 40px;
+    /* height: 20px; */
+    line-height: 85px;
+
+    /* border-bottom: 1px solid #ccc; */
+
+    font-size: 2.8rem;
+    font-weight: bold;
+    color: #004b86;
+}
+
+/*
+    GRUPO-ENTRADA
+*/
+
+.grupo-entrada {
+    margin-bottom: 15px;
+}
+
+
+.grupo-entrada > label {
+    display: block;
+
+    font-weight: bold;
+}
+
+/*
+    CAMPO
+*/
+
+.campo {
+    display: block;
+    width: 100%;
+    height: 2.8em;
+
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+
+    background-color: #fff;
+    
+    font-size: 1.4rem;
+}
+
+textarea.campo {
+    height: 8.4em;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

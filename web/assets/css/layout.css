@@ -1,0 +1,52 @@
+/*  
+    LAYOUT
+*/
+
+.layout-cabecalho {
+    height: 60px;
+    line-height: 60px;
+    border-bottom: 1px solid #ccc;
+
+    background-color: #ffffff;
+}
+
+.layout-cabecalho--home { 
+    
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    z-index: 9999;
+}
+
+.layout-cabecalho--tabela {
+    height: 85px;
+    line-height: 85px;
+    /* margin-bottom: 20px; */
+}
+
+.layout-rodape {
+    padding: 40px 0;
+
+    background-color: #484848;
+
+    color: #ffffff;
+    text-align: center;
+}
+
+.layout-cadastro {
+    padding: 40px 0;
+}
+
+.layout-formulario {
+    padding: 60px 0;
+}
+
+
+
+
+
+
+
+
+
