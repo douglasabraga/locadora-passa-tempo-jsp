@@ -40,8 +40,8 @@
                             <td><%=classe.getPrazoDevolucao()%></td>
                             <td><%=classe.getValor()%></td>
                             <td>
-                                 <button type="button" class=" botao botao--alterar" data-toggle="modal" data-target="#modalEditar">edit</button>
-                                <button class="botao botao--deletar"  data-toggle="modal" data-target="#modalExcluir">delete</button>
+                                <button type="button" class=" botao botao--alterar" data-toggle="modal" data-target="#modalEditar">edit</button>
+                                <a href="CrtCadastrarClasse?operacao=excluirclasse&id=<%=classe.getId()%>"><button class="botao botao--deletar">delete</button></a>
                             </td>
                         </tr>
                         <% } %>

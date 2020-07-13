@@ -46,6 +46,8 @@ public class CrtCadastrarAtor extends HttpServlet {
                 break;
                 
             case "excluirator":
+                apl.excluir(Integer.parseInt(request.getParameter("id")));
+                response.sendRedirect("gestao_ator.jsp");
                 break;
         }
     }

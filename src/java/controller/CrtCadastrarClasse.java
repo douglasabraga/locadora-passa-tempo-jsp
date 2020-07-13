@@ -49,6 +49,9 @@ public class CrtCadastrarClasse extends HttpServlet {
                 break;
                 
             case "excluirclasse":
+                apl.excluir(Integer.parseInt(request.getParameter("id")));
+                response.sendRedirect("gestao_classe.jsp");
+                
                 break;
         }
     }

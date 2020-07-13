@@ -42,6 +42,8 @@ public class CrtCadastrarDiretor extends HttpServlet {
                 break;
                 
             case "excluirdiretor":
+                apl.excluir(Integer.parseInt(request.getParameter("id")));
+                response.sendRedirect("gestao_diretor.jsp");
                 break;
         }
     }
