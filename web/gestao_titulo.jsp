@@ -48,8 +48,8 @@
                             <td><%=titulo.getCategoria()%></td>
                             <td><%=titulo.getClasse()%></td>
                             <td>
-                                <button type="button" class=" botao botao--alterar" data-toggle="modal" data-target="#modalEditar">edit</button>
-                                <a href="CrtCadastrarTitulo?operacao=excluirtitulo&id=<%=titulo.getId()%>"><button class="botao botao--deletar">delete</button></a>
+                                <button type="button" class=" botao botao--alterar">edit</button>
+                                <a data-id="<%=titulo.getId()%>" onclick="confirmar(this)"><button class="botao botao--deletar">delete</button></a>
                             </td>
                         </tr>
                         <% } %>
@@ -60,6 +60,17 @@
                 
             </div>
         </section>
+        <script>
+            function confirmar(componente){
+                var id = componente.getAttribute("data-id");
+                var c = confirm('Vai mesmo deletar esse titulo?  ' + id);
+                if(c === true){
+                    componente.setAttribute('href','CrtCadastrarTitulo?operacao=excluirtitulo&id=' + id);
+                }else{
+                    return;
+                }
+            }
+        </script> 
         <%@include  file="includes/scriptsJs.jsp"%>
     </body>
 </html>

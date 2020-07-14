@@ -45,7 +45,7 @@
                             <td><%=item.getTitulo().getTitulo()%></td>
                             <td>
                                 <button type="button" class=" botao botao--alterar" >edit</button>
-                                <a class="conf" onclick="confirmar(<%=item.getId()%>)"><button class="botao botao--deletar">delete</button></a>
+                                <a data-id="<%=item.getId()%>" onclick="confirmar(this)"><button class="botao botao--deletar">delete</button></a>
                             </td>
                         </tr>
                         <% } %>
@@ -56,17 +56,17 @@
                 
             </div>
         </section>
-            <script>
-                function confirmar(id){
-                    const link = document.querySelector('.conf');
-                    var c = confirm('Vai mesmo deletar esse item?');
-                    if(c === true){
-                        link.setAttribute('href','CrtCadastrarItem?operacao=excluiritem&id=' + id);
-                    }else{
-                        return;
-                    }
+        <script>
+            function confirmar(componente){
+                var id = componente.getAttribute("data-id");
+                var c = confirm('Vai mesmo deletar esse item?  ' + id);
+                if(c === true){
+                    componente.setAttribute('href','CrtCadastrarItem?operacao=excluiritem&id=' + id);
+                }else{
+                    return;
                 }
-            </script>
+            }
+        </script> 
         <%@include  file="includes/scriptsJs.jsp"%>
     </body>
 </html>

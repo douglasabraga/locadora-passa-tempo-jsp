@@ -35,9 +35,9 @@
                         <tr>
                             <td><%=ator.getId()%></td>
                             <td><%=ator.getNome()%></td>
-                            <td>
-                                <button type="button" class=" botao botao--alterar" data-toggle="modal" data-target="#modalEditar">edit</button>
-                                <a href="CrtCadastrarAtor?operacao=excluirator&id=<%=ator.getId()%>"><button class="botao botao--deletar">delete</button></a>
+                            <td> 
+                                <button type="button" class=" botao botao--alterar">edit</button>
+                                <a data-id="<%=ator.getId()%>" onclick="confirmar(this)"><button class="botao botao--deletar">delete</button></a>
                             </td>
                         </tr>
                         <% } %>
@@ -45,20 +45,20 @@
                 </table>
                 
                 <a href="${pageContext.request.contextPath}/cadastro_ator.jsp"><button type="button" class="botao botao--adicionar">Adicionar</button></a>
-                
-                <%--<%@include  file="includes/modais/modal_excluir.jsp" %> data-cod='<%=ator.getId()%>  --%>
-                
+                    
             </div>
         </section>
-            
+        <script>
+            function confirmar(componente){
+                var id = componente.getAttribute("data-id");
+                var c = confirm('Vai mesmo deletar esse ator?  ' + id);
+                if(c === true){
+                    componente.setAttribute('href','CrtCadastrarAtor?operacao=excluirator&id=' + id);
+                }else{
+                    return;
+                }
+            }
+        </script>    
         <%@include  file="includes/scriptsJs.jsp"%> 
-        <%--<script>
-            $('#modalExcluir').on('show.bs.modal', function (e) {
-                var id = $(e.relatedTarget).data('cod');
-
-                var modal = $(this);
-                modal.find('.modal-body .botao--alterar').attr("onclick", "location.href='${pageContext.request.contextPath}/CrtCadastrarAtor?operacao=excluirator&id="+id+"'");
-            });
-        </script> --%>
     </body>
 </html>
