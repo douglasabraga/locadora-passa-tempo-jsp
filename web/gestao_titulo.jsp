@@ -1,11 +1,11 @@
-<%@page import="model.domain.Ator"%>
-<%@page import="model.application.AplCadastrarAtor"%>
+<%@page import="model.domain.Titulo"%>
+<%@page import="model.application.AplCadastrarTitulo"%>
 <%@page import="java.util.List"%>
 <!DOCTYPE html>
 <html lang="pt-br">
     <head>
         <%@include  file="includes/head.jsp"%>
-        <title>Passa Tempo | Gestão de Ator</title>
+        <title>Passa Tempo | Gestão de Titulo</title>
     </head>
     <body>
         <header class="layout-cabecalho">
@@ -14,10 +14,10 @@
 
         <section class="layout-formulario">
             <div class="container table-responsive">
-                <h1 class="titulo-formulario">Gestão de Atores</h1>
+                <h1 class="titulo-formulario">Gestão de Titulos</h1>
                 <% 
-                    AplCadastrarAtor apl = new AplCadastrarAtor();
-                    List<Ator> lista = apl.buscarTodos();
+                    AplCadastrarTitulo apl = new AplCadastrarTitulo();
+                    List<Titulo> lista = apl.buscarTodos();
                     
                     //if(lista.size() > 0) {
                 %>
@@ -25,26 +25,38 @@
                     <thead>
                         <tr>
                             <th>#</th>
-                            <th>Nome</th>
+                            <th>Nome titulo</th>
+                            <th>Atores</th>
+                            <th>Diretor</th>
+                            <th>Ano</th>
+                            <th>Sinopse</th>
+                            <th>Categoria</th>
+                            <th>Classe</th>
                             <th>Ação</th>
                         </tr>
                     </thead>
 
                     <tbody>
-                        <% for(Ator ator : lista) { %>
+                        <% for(Titulo titulo : lista) { %>
                         <tr>
-                            <td><%=ator.getId()%></td>
-                            <td><%=ator.getNome()%></td>
+                            <td><%=titulo.getId()%></td>
+                            <td><%=titulo.getTitulo()%></td>
+                            <td><%=titulo.getAtores()%></td>
+                            <td><%=titulo.getDiretor().getNome()%></td>
+                            <td><%=titulo.getAno()%></td>
+                            <td><%=titulo.getSinopse()%></td>
+                            <td><%=titulo.getCategoria()%></td>
+                            <td><%=titulo.getClasse()%></td>
                             <td>
-                                 <button type="button" class=" botao botao--alterar" data-toggle="modal" data-target="#modalEditar">edit</button>
-                                <button class="botao botao--deletar"  data-toggle="modal" data-target="#modalExcluir">delete</button>
+                                <button type="button" class=" botao botao--alterar" data-toggle="modal" data-target="#modalEditar">edit</button>
+                                <a href="CrtCadastrarTitulo?operacao=excluirtitulo&id=<%=titulo.getId()%>"><button class="botao botao--deletar">delete</button></a>
                             </td>
                         </tr>
                         <% } %>
                     </tbody>
                 </table>
                 
-                <a href="${pageContext.request.contextPath}/cadastro_ator.jsp"><button type="button" class="botao botao--adicionar">Adicionar</button></a>
+                <a href="${pageContext.request.contextPath}/cadastro_titulo.jsp"><button type="button" class="botao botao--adicionar">Adicionar</button></a>
                 
             </div>
         </section>

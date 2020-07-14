@@ -15,10 +15,6 @@ import javax.servlet.http.HttpServletResponse;
 
 import model.application.AplCadastrarAtor;
 
-/**
- *
- * @author dougl
- */
 //@WebServlet("/CrtCadastrarAtor")
 public class CrtCadastrarAtor extends HttpServlet {
     private AplCadastrarAtor apl;
@@ -30,8 +26,7 @@ public class CrtCadastrarAtor extends HttpServlet {
 
     
     @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         
         String op = request.getParameter("operacao");
         

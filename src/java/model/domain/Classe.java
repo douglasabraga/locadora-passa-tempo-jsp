@@ -58,4 +58,11 @@ public class Classe implements Serializable{
     public void setPrazoDevolucao(int prazoDevolucao) {
         this.prazoDevolucao = prazoDevolucao;
     }
+
+    @Override
+    public String toString() {
+        return  nome;
+    }
+    
+    
 }
