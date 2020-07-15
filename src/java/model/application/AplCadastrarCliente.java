@@ -31,7 +31,9 @@ public class AplCadastrarCliente extends AplCadastroBase<Cliente>{
         dao.atualizar(cliente);
     }*/
     
-    public void inserirDependente(String nome, Date dtNasc, String sexo) {
+    public void inserirDependente(int idSocio, String nome, Date dtNasc, String sexo) {
+        Socio socio = (Socio)dao.buscarPorID(idSocio);
+        socio.setListaDependentes(new Dependente(nome, dtNasc, sexo));
         dao.inserir(new Dependente(nome, dtNasc, sexo));
     }
     

@@ -35,9 +35,17 @@
                         <tr>
                             <td><%=diretor.getId()%></td>
                             <td><%=diretor.getNome()%></td>
-                            <td>
-                                <button type="button" class=" botao botao--alterar" data-toggle="modal" data-target="#modalEditar">edit</button>
-                                <a data-id="<%=diretor.getId()%>" onclick="confirmar(this)"><button class="botao botao--deletar">delete</button></a>
+                            <td> 
+                                <button type="button" class=" botao botao--alterar">
+                                    edit
+                                </button>
+                                <button type="button" class="botao botao--deletar"
+                                    data-toggle="modal"
+                                    data-target="#modalExcluir"
+                                    data-id="<%=diretor.getId()%>"
+                                    data-nome="diretor"
+                                    data-route="/CrtCadastrarDiretor?operacao=excluirdiretor&id=">delete
+                                </button>
                             </td>
                         </tr>
                         <% } %>
@@ -48,17 +56,8 @@
                 
             </div>
         </section>
-        <script>
-            function confirmar(componente){
-                var id = componente.getAttribute("data-id");
-                var c = confirm('Vai mesmo deletar esse Diretor?  ' + id);
-                if(c === true){
-                    componente.setAttribute('href','CrtCadastrarDiretor?operacao=excluirdiretor&id=' + id);
-                }else{
-                    return;
-                }
-            }
-        </script> 
+                
+        <%@include  file="includes/modais/modal_excluir.jsp"%>
         <%@include  file="includes/scriptsJs.jsp"%>
     </body>
 </html>

@@ -61,7 +61,7 @@ public class Socio extends Cliente {
         return listaDependentes;
     }
 
-    public void setListaDependentes(List<Dependente> listaDependentes) {
-        this.listaDependentes = listaDependentes;
+    public void setListaDependentes(Dependente dependente) {
+        this.listaDependentes.add(dependente);
     }
 }

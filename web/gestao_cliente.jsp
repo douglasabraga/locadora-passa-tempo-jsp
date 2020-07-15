@@ -43,10 +43,17 @@
                             <td><%=cliente.getSexo()%></td>
                             <td><%=cliente.getClass().getSimpleName()%></td>
                             <td><%=cliente.isEstahAtivo()%></td>
-                            
-                            <td> 
-                                <button type="button" class=" botao botao--alterar">edit</button>
-                                <a data-id="<%=cliente.getId()%>" onclick="confirmar(this)"><button class="botao botao--deletar">delete</button></a>
+                            <td>
+                                <button type="button" class=" botao botao--alterar">
+                                    edit
+                                </button>
+                                <button type="button" class="botao botao--deletar"
+                                    data-toggle="modal"
+                                    data-target="#modalExcluir"
+                                    data-id="<%=cliente.getId()%>"
+                                    data-nome="<%=cliente.getClass().getSimpleName()%>"
+                                    data-route="/CrtCadastrarCliente?operacao=excluircliente&id=">delete
+                                </button>
                             </td>
                         </tr>
                         <% } %>
@@ -54,21 +61,11 @@
                 </table>
                 
                 <a href="${pageContext.request.contextPath}/cadastro_cliente.jsp"><button type="button" class="botao botao--adicionar">Adicionar Sócio</button></a>
-                 <a href="${pageContext.request.contextPath}/cadastro_dependente.jsp"><button type="button" class="botao botao--adicionar">Adicionar Dependente</button></a>
+                <a href="${pageContext.request.contextPath}/cadastro_dependente.jsp"><button type="button" class="botao botao--adicionar">Adicionar Dependente</button></a>
                     
             </div>
         </section>
-        <script>
-            function confirmar(componente){
-                var id = componente.getAttribute("data-id");
-                var c = confirm('Vai mesmo deletar esse cliente?  ' + id);
-                if(c === true){
-                    componente.setAttribute('href','CrtCadastrarCliente?operacao=excluircliente&id=' + id);
-                }else{
-                    return;
-                }
-            }
-        </script>    
-        <%@include  file="includes/scriptsJs.jsp"%> 
+        <%@include  file="includes/modais/modal_excluir.jsp"%>
+        <%@include  file="includes/scriptsJs.jsp"%>
     </body>
 </html>

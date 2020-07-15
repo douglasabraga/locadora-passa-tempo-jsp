@@ -28,8 +28,10 @@
                     <div class="grupo-entrada">
                         <label for="classe">Sócios disponíveis</label>
                         <select id="socio" name="socio" class="campo" required>
-                            <% for(Cliente socio : aplCliente.buscarSocios()){ %>
-                                <option value="<%=socio.getId()%>"><%=socio.getNome()%></option>
+                            <% for(Socio socio : aplCliente.buscarSocios()){ %>
+                                <% if(socio.getListaDependentes().size() < 2){ %>
+                                    <option value="<%=socio.getId()%>"><%=socio.getNome()%></option>
+                                <% } %>
                             <% } %>
                         </select>
                     </div>

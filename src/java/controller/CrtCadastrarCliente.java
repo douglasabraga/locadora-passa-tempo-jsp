@@ -39,13 +39,18 @@ public class CrtCadastrarCliente extends HttpServlet {
                     
                     response.sendRedirect("gestao_cliente.jsp");
                     break;
+                    
                 case "incluirdependente":
-                    apl.inserirDependente(request.getParameter("nome"),
+                    apl.inserirDependente(Integer.parseInt(request.getParameter("socio")),
+                                          request.getParameter("nome"),
                                           new SimpleDateFormat("yyyy-MM-dd").parse(request.getParameter("data")),
                                           request.getParameter("sexo"));
+                    
                     response.sendRedirect("gestao_cliente.jsp");
                     break;
+                    
                 case "excluircliente":
+                    apl.excluir(Integer.parseInt(request.getParameter("id")));
                     response.sendRedirect("gestao_cliente.jsp");
                     
             }

@@ -40,8 +40,16 @@
                             <td><%=classe.getPrazoDevolucao()%></td>
                             <td><%=classe.getValor()%></td>
                             <td>
-                                <button type="button" class=" botao botao--alterar">edit</button>
-                                <a data-id="<%=classe.getId()%>" onclick="confirmar(this)"><button class="botao botao--deletar">delete</button></a>
+                                <button type="button" class=" botao botao--alterar">
+                                    edit
+                                </button>
+                                <button type="button" class="botao botao--deletar"
+                                    data-toggle="modal"
+                                    data-target="#modalExcluir"
+                                    data-id="<%=classe.getId()%>"
+                                    data-nome="classe"
+                                    data-route="/CrtCadastrarClasse?operacao=excluirclasse&id=">delete
+                                </button>
                             </td>
                         </tr>
                         <% } %>
@@ -52,17 +60,8 @@
                 
             </div>
         </section>
-        <script>
-            function confirmar(componente){
-                var id = componente.getAttribute("data-id");
-                var c = confirm('Vai mesmo deletar essa Classe?  ' + id);
-                if(c === true){
-                    componente.setAttribute('href','CrtCadastrarClasse?operacao=excluirclasse&id=' + id);
-                }else{
-                    return;
-                }
-            }
-        </script>   
+                
+        <%@include  file="includes/modais/modal_excluir.jsp"%>
         <%@include  file="includes/scriptsJs.jsp"%>
     </body>
 </html>
