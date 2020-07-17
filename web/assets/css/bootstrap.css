@@ -524,6 +524,10 @@ pre code {
   margin-left: auto;
 }
 
+.container-sm {
+    width: 50%;
+}
+
 @media (min-width: 576px) {
   .container {
     max-width: 540px;
@@ -4580,7 +4584,7 @@ input[type="button"].btn-block {
   padding: 0.75rem 1.25rem;
   margin-bottom: 0;
   background-color: rgba(0, 0, 0, 0.03);
-  border-bottom: 1px solid rgba(0, 0, 0, 0.125);
+  /*border-bottom: 1px solid rgba(0, 0, 0, 0.125);*/
 }
 
 .card-header:first-child {
@@ -9811,7 +9815,7 @@ button.bg-dark:focus {
 }
 
 .text-primary {
-  color: #007bff !important;
+  color: #004b86 !important;
 }
 
 a.text-primary:hover, a.text-primary:focus {

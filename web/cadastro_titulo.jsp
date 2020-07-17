@@ -54,7 +54,7 @@
                                 <label for="classe">Classe</label>
                                 <select id="classe" name="classe" class="campo" required>
                                     <% for(Classe classe : aplClasse.buscarTodos()){ %>
-                                        <option value="<%=classe.getId()%>"><%=classe.getNome()%></option>
+                                        <option  class="dropdown-item" value="<%=classe.getId()%>"><%=classe.getNome()%></option>
                                     <% } %>
                                 </select>
                             </div>
@@ -83,7 +83,7 @@
                         <textarea class="form-control  campo" name="sinopse" rows="3"></textarea>
                     </div>
                     
-                    <input type="submit" value="Cadastrar" class="botao  botao--principal">
+                    <input type="submit" value="Cadastrar" class="btn btn-primary btn-lg">
                 </form>
             </div>
 

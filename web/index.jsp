@@ -18,13 +18,13 @@
                         <div class="row">
                             <!-- <label for="nome">Nome</label> -->
                             <div class="col-sm-3">
-                                <input type="text" name="nome" id="nome" class="campo" placeholder="Nome">
+                                <input type="text" name="nome" id="nome" class="campo" placeholder="Ator">
                             </div>
                             <div class="col-sm-3">
-                                <input type="text" name="categoria" id="categoria" class="campo" placeholder="Categoria">
+                                <input type="text" name="categoria" id="categoria" class="campo" placeholder="Diretor">
                             </div>
                             <div class="col-sm-3">
-                                <input type="text" name="ator" id="ator" class="campo" placeholder="Ator">
+                                <input type="text" name="ator" id="ator" class="campo" placeholder="Categoria">
                             </div>
                             <div class="col-sm-3">
                                 <button class="botao botao--pesquisar">Pesquisar</button>
@@ -43,5 +43,6 @@
             <img class="capa img-fluid" width="290" height="430" src="https://adorocinematorrent.com/capas/sonic-o-filme-legendado-hdrip-download-torrent-2020-dublado-dual-audio-bluray-1080p-720p-4k-hd.jpg" alt="Sonic - O Filme - Legendado HDRIP" title="Sonic - O Filme - Legendado HDRIP">
             <img class="capa img-fluid" width="290" height="430" src="https://adorocinematorrent.com/capas/aves-de-rapina-arlequina-e-sua-emancipacao-fantabulosa-legendado-hdrip-download-torrent-2020-dublado-dual-audio-bluray-1080p-720p-4k-hd.jpg" alt="Aves de Rapina - Arlequina e sua Emancipação Fantabulosa - Legendado HDRIP" title="Aves de Rapina - Arlequina e sua Emancipação Fantabulosa - Legendado HDRIP">
         </div>
+        
     </body>
 </html>

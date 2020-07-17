@@ -25,21 +25,22 @@
                     </div>
                     
                     <div class="row">
-                    <div class="col-sm-6">
-                        <div class="grupo-entrada">
-                            <label for="number_valor">Valor</label>
-                            <input type="number" name="number_valor" min="0.00" step="0.01" class="campo" required>
+                        <div class="col-sm-6">
+                            <div class="grupo-entrada">
+                                <label for="number_valor">Valor</label>
+                                <input type="number" name="number_valor" min="0.00" step="0.01" class="campo" required>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="grupo-entrada">
+                                <label for="number_prazo">Prazo Devolução</label>
+                                <input type="number"  name="number_prazo"  class="campo" required>
+                            </div>
                         </div>
                     </div>
                     
-                    <div class="col-sm-6">
-                        <div class="grupo-entrada">
-                            <label for="number_prazo">Prazo Devolução</label>
-                            <input type="number"  name="number_prazo"  class="campo" required>
-                        </div>
-                    </div>
-                </div>
-                    <input type="submit" value="Cadastrar" class="botao  botao--principal">
+                    <input type="submit" value="Cadastrar" class="btn btn-primary btn-lg">
+                
                 </form>
             </div>
 

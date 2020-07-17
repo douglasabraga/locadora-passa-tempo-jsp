@@ -11,6 +11,6 @@
 
         modal.find('#texto-normal').text('Deseja deletar esse(a) ' + nome + '?');
 
-        modal.find('.modal-footer .btn-primary').attr("onclick", "location.href='${pageContext.request.contextPath}"+route+"'");
+        modal.find('.modal-footer .btn-danger').attr("onclick", "location.href='${pageContext.request.contextPath}"+route+"'");
     });
-</script>    
+</script>

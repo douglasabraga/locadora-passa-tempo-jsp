@@ -62,7 +62,7 @@
 
                     </div>
 
-                    <input type="submit" value="Cadastrar Dependente" class="botao  botao--principal">
+                    <input type="submit" value="Cadastrar" class="btn btn-primary btn-lg">
                 
                 </form>
             </div>

@@ -13,47 +13,60 @@
         </header>
 
         <section class="layout-formulario">
-            <div class="container table-responsive">
-                <h1 class="titulo-formulario">Gestão de Diretores</h1>
+            <div class="container container-sm">
+                
                 <% 
                     AplCadastrarDiretor apl = new AplCadastrarDiretor();
                     List<Diretor> lista = apl.buscarTodos();
-                    
-                    //if(lista.size() > 0) {
                 %>
-                <table data-toggle="table" class="table table-striped condensed table-hover" >
-                    <thead>
-                        <tr>
-                            <th>#</th>
-                            <th>Nome</th>
-                            <th>Ação</th>
-                        </tr>
-                    </thead>
+                
+                <h1 class="titulo-formulario">Gestão de Diretores</h1>
+                <div class="card card-default">
+                    <div class="card-header text-center p-1">
+                        <h2 class="text-primary">Diretores</h2>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table data-toggle="table" class="table table-striped table-hover table-sm" >
+                                <thead>
+                                    <tr>
+                                        <th>#</th>
+                                        <th>Nome</th>
+                                        <th class="text-center">
+                                            <a href="${pageContext.request.contextPath}/cadastro_diretor.jsp">
+                                                <button type="button" class="btn btn-success">
+                                                    <i class="fa fa-plus"></i>
+                                                </button>
+                                            </a>
+                                        </th>
+                                    </tr>
+                                </thead>
 
-                    <tbody>
-                        <% for(Diretor diretor : lista) { %>
-                        <tr>
-                            <td><%=diretor.getId()%></td>
-                            <td><%=diretor.getNome()%></td>
-                            <td> 
-                                <button type="button" class=" botao botao--alterar">
-                                    edit
-                                </button>
-                                <button type="button" class="botao botao--deletar"
-                                    data-toggle="modal"
-                                    data-target="#modalExcluir"
-                                    data-id="<%=diretor.getId()%>"
-                                    data-nome="diretor"
-                                    data-route="/CrtCadastrarDiretor?operacao=excluirdiretor&id=">delete
-                                </button>
-                            </td>
-                        </tr>
-                        <% } %>
-                    </tbody>
-                </table>
-                
-                <a href="${pageContext.request.contextPath}/cadastro_diretor.jsp"><button type="button" class="botao botao--adicionar">Adicionar</button></a>
-                
+                                <tbody>
+                                    <% for(Diretor diretor : lista) { %>
+                                    <tr>
+                                        <td><%=diretor.getId()%></td>
+                                        <td><%=diretor.getNome()%></td>
+                                        <td class="text-center"> 
+                                            <button type="button" class="btn btn-warning">
+                                                <i class="fa fa-edit"></i>
+                                            </button>
+                                            <button type="button" class="btn btn-danger"
+                                                data-toggle="modal"
+                                                data-target="#modalExcluir"
+                                                data-id="<%=diretor.getId()%>"
+                                                data-nome="diretor"
+                                                data-route="/CrtCadastrarDiretor?operacao=excluirdiretor&id=">
+                                                <i class="fa fa-trash"></i>
+                                            </button>
+                                        </td>
+                                    </tr>
+                                    <% } %>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
             </div>
         </section>
                 

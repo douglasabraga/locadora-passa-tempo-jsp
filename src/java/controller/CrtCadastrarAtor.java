@@ -6,6 +6,7 @@
 package controller;
 
 import java.io.IOException;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 //import javax.servlet.annotation.WebServlet;
 
@@ -34,17 +35,41 @@ public class CrtCadastrarAtor extends HttpServlet {
             case "incluirator":
                 String nome = request.getParameter("txt_nome");
                 apl.inserir(nome);
-                response.sendRedirect("gestao_ator.jsp");
+                //response.sendRedirect("gestao_ator.jsp");
                 break;
             
             case "alterarator":
                 break;
                 
             case "excluirator":
-                apl.excluir(Integer.parseInt(request.getParameter("id")));
-                response.sendRedirect("gestao_ator.jsp");
+                String msge;
+                if(!apl.excluir(Integer.parseInt(request.getParameter("id")))){
+                    msge =  "<script>"+
+                            "$(document).ready(function() {"+
+                            "$('#modalMsg').modal('show');"
+                            + "var modal = $(this);"
+                            + "modal.find('#texto-titulo').text('Erro ao deletar!');"
+                            + "modal.find('#txt-normal').text('Verifique suas dependências!');"+
+                            "});\n"+
+                            "</script>";
+
+                } else {
+                    msge =  "<script>"+
+                            "$(document).ready(function() {"+
+                            "$('#modalMsg').modal('show');"
+                            + "var modal = $(this);"
+                            + "modal.find('#texto-titulo').text('Sucesso!');"
+                            + "modal.find('#txt-normal').text('Êxito ao deletar o registro');"+
+                            "});\n"+
+                            "</script>";
+                }
+                request.setAttribute("msg", msge);
                 break;
         }
+        
+        RequestDispatcher destino = request.getRequestDispatcher("gestao_ator.jsp");
+        destino.forward(request, response);
+        
     }
 
     

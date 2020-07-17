@@ -10,8 +10,8 @@ public abstract class AplCadastroBase<T> {
         this.dao = dao;
     }
     
-    public void excluir(int id) {
-        dao.excluir(id); // Exclui o ator pelo ID do banco de Dados
+    public boolean excluir(int id) {
+        return dao.excluir(id); // Exclui o ator pelo ID do banco de Dados
     }
     
     public T buscarPorID(int id) {

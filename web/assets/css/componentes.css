@@ -192,7 +192,7 @@
     margin: 0;
     margin-bottom: 40px;
 
-    border-bottom: 1px solid #ccc;
+    /*border-bottom: 1px solid #ccc;*/
 
     font-size: 2.8rem;
     font-weight: bold;
@@ -212,13 +212,13 @@
 
 .titulo-formulario--sem-borda {
     margin: 0;
-    margin-bottom: 40px;
+    /*margin-bottom: 40px;*/
     /* height: 20px; */
-    line-height: 85px;
+   /* line-height: 85px;*/
 
     /* border-bottom: 1px solid #ccc; */
 
-    font-size: 2.8rem;
+    font-size: 2.7rem;
     font-weight: bold;
     color: #004b86;
 }

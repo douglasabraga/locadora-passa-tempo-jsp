@@ -24,7 +24,7 @@
                         <input type="text" name="txt_nome" class="campo" required>
                     </div>
 
-                    <input type="submit" value="Cadastrar" class="botao  botao--principal">
+                    <input type="submit" value="Cadastrar" class="btn btn-primary btn-lg">
                 </form>
             </div>
 

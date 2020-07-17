@@ -72,7 +72,7 @@
                         </div>
                     </div>
 
-                    <input type="submit" value="Cadastrar Sócio" class="botao  botao--principal">
+                    <input type="submit" value="Cadastrar" class="btn btn-primary btn-lg">
 
                 </form>
             </div>
