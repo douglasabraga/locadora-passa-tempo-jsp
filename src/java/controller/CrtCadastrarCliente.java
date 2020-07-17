@@ -3,14 +3,14 @@ package controller;
 import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import model.application.AplCadastrarCliente;
+import msg.msgFront;
 
 @WebServlet("/CrtCadastrarCliente")
 public class CrtCadastrarCliente extends HttpServlet {
@@ -22,46 +22,56 @@ public class CrtCadastrarCliente extends HttpServlet {
     }
 
     @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         
-        try {
-            String op = request.getParameter("operacao");
-            //String classific = request.getParameter("socio");
+        String op = request.getParameter("operacao");
+        String msge;
 
-            switch(op) {
-                case "incluirsocio":
-                    apl.inserirSocio(request.getParameter("nome"),
-                                     new SimpleDateFormat("yyyy-MM-dd").parse(request.getParameter("data")),
-                                     request.getParameter("sexo"),
-                                     request.getParameter("cpf"),
-                                     request.getParameter("endereco"),
-                                     request.getParameter("telefone"));
-                    
-                    response.sendRedirect("gestao_cliente.jsp");
-                    break;
-                    
-                case "incluirdependente":
-                    apl.inserirDependente(Integer.parseInt(request.getParameter("socio")),
-                                          request.getParameter("nome"),
-                                          new SimpleDateFormat("yyyy-MM-dd").parse(request.getParameter("data")),
-                                          request.getParameter("sexo"));
-                    
-                    response.sendRedirect("gestao_cliente.jsp");
-                    break;
-                    
-                case "excluircliente":
-                    apl.excluir(Integer.parseInt(request.getParameter("id")));
-                    response.sendRedirect("gestao_cliente.jsp");
-                    
-            }
-        } catch (ParseException ex) {
-            Logger.getLogger(CrtCadastrarCliente.class.getName()).log(Level.SEVERE, null, ex);
+        switch(op) {
+            case "incluirsocio":
+                {
+                    try {
+                        apl.inserirSocio(request.getParameter("nome"),
+                                new SimpleDateFormat("yyyy-MM-dd").parse(request.getParameter("data")),
+                                request.getParameter("sexo"),
+                                request.getParameter("cpf"),
+                                request.getParameter("endereco"),
+                                request.getParameter("telefone"));
+                    } catch (ParseException ex) {
+                        System.out.println("Error!" + ex);
+                    }
+                }
+                break;
+
+            case "incluirdependente":
+                {
+                    try {
+                        apl.inserirDependente(Integer.parseInt(request.getParameter("socio")),
+                                request.getParameter("nome"),
+                                new SimpleDateFormat("yyyy-MM-dd").parse(request.getParameter("data")),
+                                request.getParameter("sexo"));
+                    } catch (ParseException ex) {
+                        System.out.println("Error!" + ex);
+                    }
+                }
+                break;
+
+            case "excluircliente":
+                if(!apl.excluir(Integer.parseInt(request.getParameter("id")))) {
+                    msge =  msgFront.msgErro;
+                } else {
+                    msge =  msgFront.msgSucesso;
+                }
+                request.setAttribute("msg", msge);
+                break;
         }
+        RequestDispatcher destino = request.getRequestDispatcher("gestao_cliente.jsp");
+        destino.forward(request, response);
     }
 
     @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        doPost(request, response);
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        doGet(request, response);
     }
     
     

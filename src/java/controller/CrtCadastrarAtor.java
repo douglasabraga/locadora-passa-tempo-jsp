@@ -5,6 +5,7 @@
  */
 package controller;
 
+import msg.msgFront;
 import java.io.IOException;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -30,38 +31,23 @@ public class CrtCadastrarAtor extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         
         String op = request.getParameter("operacao");
+        String msge;
         
         switch (op) {
             case "incluirator":
                 String nome = request.getParameter("txt_nome");
                 apl.inserir(nome);
-                //response.sendRedirect("gestao_ator.jsp");
                 break;
             
             case "alterarator":
                 break;
                 
             case "excluirator":
-                String msge;
+                
                 if(!apl.excluir(Integer.parseInt(request.getParameter("id")))){
-                    msge =  "<script>"+
-                            "$(document).ready(function() {"+
-                            "$('#modalMsg').modal('show');"
-                            + "var modal = $(this);"
-                            + "modal.find('#texto-titulo').text('Erro ao deletar!');"
-                            + "modal.find('#txt-normal').text('Verifique suas dependências!');"+
-                            "});\n"+
-                            "</script>";
-
+                    msge =  msgFront.msgErro;
                 } else {
-                    msge =  "<script>"+
-                            "$(document).ready(function() {"+
-                            "$('#modalMsg').modal('show');"
-                            + "var modal = $(this);"
-                            + "modal.find('#texto-titulo').text('Sucesso!');"
-                            + "modal.find('#txt-normal').text('Êxito ao deletar o registro');"+
-                            "});\n"+
-                            "</script>";
+                    msge =  msgFront.msgSucesso;
                 }
                 request.setAttribute("msg", msge);
                 break;
@@ -69,7 +55,6 @@ public class CrtCadastrarAtor extends HttpServlet {
         
         RequestDispatcher destino = request.getRequestDispatcher("gestao_ator.jsp");
         destino.forward(request, response);
-        
     }
 
     

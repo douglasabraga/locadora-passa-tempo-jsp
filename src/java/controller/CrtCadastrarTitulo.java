@@ -1,12 +1,14 @@
 package controller;
 
 import java.io.IOException;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import model.application.AplCadastrarTitulo;
+import msg.msgFront;
 
 @WebServlet("/CrtCadastrarTitulo")
 public class CrtCadastrarTitulo extends HttpServlet {
@@ -21,6 +23,7 @@ public class CrtCadastrarTitulo extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         
         String op = request.getParameter("operacao");
+        String msge;
         
         switch (op) {
             case "incluirtitulo":
@@ -32,18 +35,23 @@ public class CrtCadastrarTitulo extends HttpServlet {
                             Integer.parseInt(request.getParameter("classe")),
                             Integer.parseInt(request.getParameter("diretor")),
                             request.getParameterValues("ator"));
-                
-                response.sendRedirect("gestao_titulo.jsp");
                 break;
                 
             case "alterartitulo":
                 break;
             
             case "excluirtitulo":
-                apl.excluir(Integer.parseInt(request.getParameter("id")));
-                response.sendRedirect("gestao_titulo.jsp");
+                if(!apl.excluir(Integer.parseInt(request.getParameter("id")))) {
+                    msge =  msgFront.msgErro;
+                } else {
+                    msge =  msgFront.msgSucesso;
+                }
+                request.setAttribute("msg", msge);
                 break;
         }
+        
+        RequestDispatcher destino = request.getRequestDispatcher("gestao_titulo.jsp");
+        destino.forward(request, response);
     }
 
     @Override

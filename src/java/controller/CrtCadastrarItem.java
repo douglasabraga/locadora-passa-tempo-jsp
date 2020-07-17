@@ -3,15 +3,14 @@ package controller;
 import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import model.application.AplCadastrarItem;
-
+import msg.msgFront;
 
 @WebServlet("/CrtCadastrarItem")
 public class CrtCadastrarItem extends HttpServlet {
@@ -23,38 +22,44 @@ public class CrtCadastrarItem extends HttpServlet {
     }
 
     @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        
-        try {
-            String op = request.getParameter("operacao");
-            
-            switch (op) {
-                case "incluiritem":
-                    
-                    apl.inserir(Integer.parseInt(request.getParameter("numero")),
-                            new SimpleDateFormat("yyyy-MM-dd").parse(request.getParameter("data")),
-                            request.getParameter("tipo"),
-                            Integer.parseInt(request.getParameter("titulo")));
-                    
-                    response.sendRedirect("gestao_item.jsp");
-                    break;
-                    
-                case "alteraritem":
-                    break;
-                    
-                case "excluiritem":
-                    apl.excluir(Integer.parseInt(request.getParameter("id")));
-                    response.sendRedirect("gestao_item.jsp");
-                    break;
-            }
-        } catch (ParseException ex) {
-            Logger.getLogger(CrtCadastrarItem.class.getName()).log(Level.SEVERE, null, ex);
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        String op = request.getParameter("operacao");
+        String msge;
+
+        switch (op) {
+            case "incluiritem":
+                {
+                    try {
+                        apl.inserir(Integer.parseInt(request.getParameter("numero")),
+                                new SimpleDateFormat("yyyy-MM-dd").parse(request.getParameter("data")),
+                                request.getParameter("tipo"),
+                                Integer.parseInt(request.getParameter("titulo")));
+                    } catch (ParseException ex) {
+                        System.out.println("Error!" + ex);
+                    }
+                }
+                break;
+
+            case "alteraritem":
+                break;
+
+            case "excluiritem":
+                if(!apl.excluir(Integer.parseInt(request.getParameter("id")))) {
+                    msge =  msgFront.msgErro;
+                } else {
+                    msge =  msgFront.msgSucesso;
+                }
+                request.setAttribute("msg", msge);
+                break;
         }
+        
+        RequestDispatcher destino = request.getRequestDispatcher("gestao_item.jsp");
+        destino.forward(request, response);
     }
 
     @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        doPost(request, response);
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        doGet(request, response);
     }
     
     

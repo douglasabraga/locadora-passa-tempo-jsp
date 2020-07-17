@@ -83,9 +83,12 @@
                     </div>
                 </div>
             </div>
-        </section>
-                
+        </section>        
+        
         <%@include  file="includes/modais/modal_excluir.jsp"%>
+        <%@include  file="includes/modais/modal_msg.jsp"%>
         <%@include  file="includes/scriptsJs.jsp"%>
+        ${msg};
+        
     </body>
 </html>

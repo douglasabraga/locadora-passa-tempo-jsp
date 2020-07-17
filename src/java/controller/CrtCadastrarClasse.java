@@ -1,24 +1,15 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package controller;
 
 import java.io.IOException;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
-
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
 import model.application.AplCadastrarClasse;
+import msg.msgFront;
 
-/**
- *
- * @author dougl
- */
 @WebServlet("/CrtCadastrarClasse")
 public class CrtCadastrarClasse extends HttpServlet {
     private AplCadastrarClasse apl;
@@ -28,12 +19,10 @@ public class CrtCadastrarClasse extends HttpServlet {
         apl = new AplCadastrarClasse();
     }
 
-    
     @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String op = request.getParameter("operacao");
+        String msge;
         
         switch (op) {
             case "incluirclasse":
@@ -42,18 +31,25 @@ public class CrtCadastrarClasse extends HttpServlet {
                 int prazo = Integer.parseInt(request.getParameter("number_prazo"));
                 
                 apl.inserir(nome, valor, prazo);
-                response.sendRedirect("gestao_classe.jsp");
+                
                 break;
             
             case "alterarclasse":
                 break;
                 
             case "excluirclasse":
-                apl.excluir(Integer.parseInt(request.getParameter("id")));
-                response.sendRedirect("gestao_classe.jsp");
-                
+                if(!apl.excluir(Integer.parseInt(request.getParameter("id")))) {
+                   msge =  msgFront.msgErro;
+
+                } else {
+                    msge =  msgFront.msgSucesso;
+                }
+                request.setAttribute("msg", msge);
                 break;
         }
+        
+        RequestDispatcher destino = request.getRequestDispatcher("gestao_classe.jsp");
+        destino.forward(request, response);
     }
 
     
