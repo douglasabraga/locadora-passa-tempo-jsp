@@ -5,12 +5,14 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import model.application.AplCadastrarLocacao;
 import msg.msgFront;
 
+@WebServlet("/CrtCadastrarLocacao")
 public class CrtCadastrarLocacao extends HttpServlet {
     private AplCadastrarLocacao apl;
 
@@ -26,23 +28,23 @@ public class CrtCadastrarLocacao extends HttpServlet {
         String msge;
         
         switch (op) {
-            case "incluirator":
+            case "incluirlocacao":
                 {
                     try {
-                        apl.inserir(new SimpleDateFormat("yyyy-MM-dd").parse(request.getParameter("data_prev")),
+                        apl.inserir(new SimpleDateFormat("yyyy-MM-dd").parse(request.getParameter("dtDevPrev")),
                                         Double.parseDouble(request.getParameter("valor")),
                                         Integer.parseInt(request.getParameter("item")),
                                         Integer.parseInt(request.getParameter("cliente")));
                     } catch (ParseException ex) {
-                        System.out.println("Error!" + ex);
+                        System.out.println("Error! " + ex);
                     }
                 }
                 break;
             
-            case "alterarator":
+            case "alterarlocacao":
                 break;
                 
-            case "excluirator":
+            case "excluirlocacao":
                 if(!apl.excluir(Integer.parseInt(request.getParameter("id")))){
                     msge = msgFront.msgErro;
                 } else {

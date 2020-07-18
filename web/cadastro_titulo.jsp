@@ -1,11 +1,12 @@
-<%@page import="model.domain.Ator"%>
 <%@page import="model.application.AplCadastrarAtor"%>
 <%@page import="model.application.AplCadastrarDiretor"%>
 <%@page import="model.application.AplCadastrarClasse"%>
+<%@page import="model.domain.Ator"%>
 <%@page import="model.domain.Classe"%>
 <%@page import="model.domain.Diretor"%>
 <%@page import="model.domain.Titulo"%>
 <%@page import="java.util.List"%>
+
 <!DOCTYPE html>
 <html lang="pt-br">
     <head>
@@ -16,7 +17,6 @@
     AplCadastrarClasse aplClasse = new AplCadastrarClasse();
     AplCadastrarDiretor aplDiretor = new AplCadastrarDiretor();
     AplCadastrarAtor aplAtor = new AplCadastrarAtor();
-    //Titulo titulo = (Titulo)request.getAttribute("titulo");
 %>
 
     <body>

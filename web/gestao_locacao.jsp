@@ -1,6 +1,7 @@
-<%@page import="model.domain.Ator"%>
-<%@page import="model.application.AplCadastrarAtor"%>
+<%@page import="model.domain.Locacao"%>
+<%@page import="model.application.AplCadastrarLocacao"%>
 <%@page import="java.util.List"%>
+
 <!DOCTYPE html>
 <html lang="pt-br">
     <head>
@@ -13,17 +14,17 @@
         </header>
 
         <section class="layout-formulario">
-            <div class="container container-sm">
+            <div class="container">
                 
                 <% 
-                    AplCadastrarAtor apl = new AplCadastrarAtor();
-                    List<Ator> lista = apl.getAll();
+                    AplCadastrarLocacao apl = new AplCadastrarLocacao();
+                    List<Locacao> lista = apl.getAll();
                 %>
                 
-                <h1 class="titulo-formulario">Gestão de Atores</h1>
+                <h1 class="titulo-formulario">Gestão de Locações</h1>
                 <div class="card card-default">
                     <div class="card-header text-center p-1">
-                        <h2 class="text-primary">Atores</h2>
+                        <h2 class="text-primary">Locações</h2>
                     </div>
                     <div class="card-body">
                         <div class="table-responsive">
@@ -31,9 +32,14 @@
                                 <thead>
                                     <tr>
                                         <th>#</th>
-                                        <th>Nome</th>
+                                        <th>Cliente</th>
+                                        <th>Item</th>
+                                        <th>Valor</th>
+                                        <th>Data Locação</th>
+                                        <th>Data Dev Prevista</th>
+                                        
                                         <th class="text-center">
-                                            <a href="${pageContext.request.contextPath}/cadastro_ator.jsp">
+                                            <a href="${pageContext.request.contextPath}/cadastro_locacao.jsp">
                                                 <button type="button" class="btn btn-success">
                                                     <i class="fa fa-plus"></i>
                                                 </button>
@@ -43,20 +49,24 @@
                                 </thead>
 
                                 <tbody>
-                                    <% for(Ator ator : lista) { %>
+                                    <% for(Locacao locacao : lista) { %>
                                     <tr>
-                                        <td><%=ator.getId()%></td>
-                                        <td><%=ator.getNome()%></td>
-                                        <td class="text-center"> 
+                                        <td><%=locacao.getId()%></td>
+                                        <td><%=locacao.getCliente().getNome()%></td>
+                                        <td><%=locacao.getItem().getNumSerie()%></td>
+                                        <td><%=locacao.getItem().getTitulo().getClasse().getValor()%></td>
+                                        <td><%=locacao.getDtLocacao()%></td>
+                                        <td><%=locacao.getDtDevolucaoPrevista()%></td>
+                                        <td class="text-center">
                                             <button type="button" class="btn btn-warning">
                                                 <i class="fa fa-edit"></i>
                                             </button>
                                             <button type="button" class="btn btn-danger"
                                                 data-toggle="modal"
                                                 data-target="#modalExcluir"
-                                                data-id="<%=ator.getId()%>"
-                                                data-nome="ator"
-                                                data-route="/CrtCadastrarAtor?operacao=excluirator&id=">
+                                                data-id="<%=locacao.getId()%>"
+                                                data-nome="locacao"
+                                                data-route="/CrtCadastrarLocacao?operacao=excluirlocacao&id=">
                                                 <i class="fa fa-trash"></i>
                                             </button>
                                         </td>

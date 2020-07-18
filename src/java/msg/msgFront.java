@@ -6,7 +6,7 @@ public class msgFront {
                             "$('#modalMsg').modal('show');"
                             + "var modal = $(this);"
                             + "modal.find('#texto-titulo').text('Sucesso!');"
-                            + "modal.find('#txt-normal').text('Êxito ao deletar o registro');"+
+                            + "modal.find('#txt-normal').text('Êxito na operação!');"+
                             "});\n"+
                             "</script>";
     
