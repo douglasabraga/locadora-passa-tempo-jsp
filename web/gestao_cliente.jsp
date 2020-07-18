@@ -17,7 +17,7 @@
                 
                 <% 
                     AplCadastrarCliente apl = new AplCadastrarCliente();
-                    List<Cliente> lista = apl.buscarTodos();
+                    List<Cliente> lista = apl.getAll();
                 %>
                 
                 <h1 class="titulo-formulario">Gestão de Clientes</h1>

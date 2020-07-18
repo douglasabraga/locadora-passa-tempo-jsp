@@ -17,7 +17,7 @@
                 
                 <% 
                     AplCadastrarAtor apl = new AplCadastrarAtor();
-                    List<Ator> lista = apl.buscarTodos();
+                    List<Ator> lista = apl.getAll();
                 %>
                 
                 <h1 class="titulo-formulario">Gestão de Atores</h1>

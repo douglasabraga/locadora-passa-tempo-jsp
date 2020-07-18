@@ -9,7 +9,7 @@ import model.domain.Classe;
 import model.domain.Diretor;
 import model.domain.Titulo;
 
-public class AplCadastrarTitulo extends AplCadastroBase<Titulo>{
+public class AplCadastrarTitulo extends AplCadastrar<Titulo>{
     private DAOImplement<Classe> daoClasse;
     private DAOImplement<Diretor> daoDiretor;
     private DAOImplement<Ator> daoAtor;
@@ -22,12 +22,12 @@ public class AplCadastrarTitulo extends AplCadastroBase<Titulo>{
     }
     
     public void inserir(String titulo, int ano, String sinopse, String categoria, int idClasse, int idDiretor, String[] atores) {
-        Classe classe = daoClasse.buscarPorID(idClasse);
-        Diretor diretor = daoDiretor.buscarPorID(idDiretor);
+        Classe classe = daoClasse.getById(idClasse);
+        Diretor diretor = daoDiretor.getById(idDiretor);
         List<Ator> listaAtores = new ArrayList<>();
         
         for (String atore : atores) {
-            Ator ator = daoAtor.buscarPorID(Integer.parseInt(atore));
+            Ator ator = daoAtor.getById(Integer.parseInt(atore));
             listaAtores.add(ator);
         }
         
@@ -35,17 +35,17 @@ public class AplCadastrarTitulo extends AplCadastroBase<Titulo>{
     }
     
   /*  public void atualizar(int id, String titulo, int ano, String sinopse, String categoria, int idClasse, int idDiretor, String[] atores) {
-        Classe classe = daoClasse.buscarPorID(idClasse);
-        Diretor diretor = daoDiretor.buscarPorID(idDiretor);
+        Classe classe = daoClasse.getById(idClasse);
+        Diretor diretor = daoDiretor.getById(idDiretor);
         
         List<Ator> atorez = new ArrayList<>();
         
         for(int x = 0; x < atores.length; x++) {
-            Ator ator = daoAtor.buscarPorID(Integer.parseInt(atores[x]));
+            Ator ator = daoAtor.getById(Integer.parseInt(atores[x]));
             atorez.add(ator);
         }
         
-        Titulo _titulo = dao.buscarPorID(id);
+        Titulo _titulo = dao.getById(id);
         _titulo.setTitulo(titulo);
         _titulo.setAno(ano);
         _titulo.setSinopse(sinopse);

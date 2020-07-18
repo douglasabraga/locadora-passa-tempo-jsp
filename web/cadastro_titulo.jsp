@@ -53,7 +53,7 @@
                             <div class="grupo-entrada">
                                 <label for="classe">Classe</label>
                                 <select id="classe" name="classe" class="campo" required>
-                                    <% for(Classe classe : aplClasse.buscarTodos()){ %>
+                                    <% for(Classe classe : aplClasse.getAll()){ %>
                                         <option  class="dropdown-item" value="<%=classe.getId()%>"><%=classe.getNome()%></option>
                                     <% } %>
                                 </select>
@@ -63,7 +63,7 @@
                     <div class="grupo-entrada">
                         <label for="ator">Atores</label>
                         <select id="ator" name="ator" class="custom-select campo" multiple>
-                            <% for(Ator ator : aplAtor.buscarTodos()){ %>
+                            <% for(Ator ator : aplAtor.getAll()){ %>
                                 <option value="<%=ator.getId()%>"><%=ator.getNome()%></option>
                             <% } %>
                         </select>
@@ -72,7 +72,7 @@
                     <div class="grupo-entrada">
                         <label for="diretor">Diretor</label>
                         <select id="diretor" name="diretor" class="campo" required>
-                            <% for(Diretor diretor : aplDiretor.buscarTodos()){ %>
+                            <% for(Diretor diretor : aplDiretor.getAll()){ %>
                                 <option value="<%=diretor.getId()%>"><%=diretor.getNome()%></option>
                             <% } %>
                         </select>

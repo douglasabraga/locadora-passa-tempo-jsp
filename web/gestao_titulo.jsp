@@ -17,7 +17,7 @@
                 
                 <% 
                     AplCadastrarTitulo apl = new AplCadastrarTitulo();
-                    List<Titulo> lista = apl.buscarTodos();
+                    List<Titulo> lista = apl.getAll();
                 %>
   
                 <h1 class="titulo-formulario">Gestão de Titulos</h1>

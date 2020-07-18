@@ -63,25 +63,6 @@ public class DAOImplement<T> implements DAOGenerico<T>{
     }
 
     @Override
-    public T atualizar(T objeto) {
-        try {
-            sessao = ConexaoHibernate.getSessionFactory().openSession();
-            transacao = sessao.beginTransaction();
-            sessao.update(objeto);
-            transacao.commit();
-            return objeto;
-        } catch (HibernateException ex) {
-            transacao.rollback();
-        } finally {
-            if(sessao != null) {
-                sessao.close();
-            }
-        }
-       
-        return null;
-    }
-
-    @Override
     public boolean excluir(int id) {
         try {
             sessao = ConexaoHibernate.getSessionFactory().openSession();
@@ -102,7 +83,7 @@ public class DAOImplement<T> implements DAOGenerico<T>{
     }
 
     @Override
-    public T buscarPorID(int id) {
+    public T getById(int id) {
         try {
             sessao = ConexaoHibernate.getSessionFactory().openSession();
             transacao = sessao.beginTransaction();
@@ -121,7 +102,7 @@ public class DAOImplement<T> implements DAOGenerico<T>{
     }
 
     @Override
-    public List<T> buscarTodos() {
+    public List<T> getAll() {
         try {
             sessao = ConexaoHibernate.getSessionFactory().openSession();
             transacao = sessao.beginTransaction();
@@ -135,7 +116,6 @@ public class DAOImplement<T> implements DAOGenerico<T>{
                 sessao.close();
             }
         }
-       
         return null;
     }
 }

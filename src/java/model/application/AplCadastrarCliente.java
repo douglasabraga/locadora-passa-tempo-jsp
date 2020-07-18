@@ -8,7 +8,7 @@ import model.domain.Cliente;
 import model.domain.Dependente;
 import model.domain.Socio;
 
-public class AplCadastrarCliente extends AplCadastroBase<Cliente>{
+public class AplCadastrarCliente extends AplCadastrar<Cliente>{
     private ClienteDAO dao;
 
     public AplCadastrarCliente() {
@@ -21,7 +21,7 @@ public class AplCadastrarCliente extends AplCadastroBase<Cliente>{
     }
     
    /* public void atualizarSocio(int id, String nome, Date dtNasc, String sexo, String cpf, String end, String tel) {
-        Socio cliente = (Socio)dao.buscarPorID(id);
+        Socio cliente = (Socio)dao.getById(id);
         cliente.setNome(nome);
         cliente.setDtNascimento(dtNasc);
         cliente.setSexo(sexo);
@@ -32,13 +32,13 @@ public class AplCadastrarCliente extends AplCadastroBase<Cliente>{
     }*/
     
     public void inserirDependente(int idSocio, String nome, Date dtNasc, String sexo) {
-        Socio socio = (Socio)dao.buscarPorID(idSocio);
+        Socio socio = (Socio)dao.getById(idSocio);
         socio.setListaDependentes(new Dependente(nome, dtNasc, sexo));
         dao.inserir(new Dependente(nome, dtNasc, sexo));
     }
     
    /* public void atualizarDependente(int id, String nome, Date dtNasc, String sexo) {
-        Dependente cliente = (Dependente)dao.buscarPorID(id);
+        Dependente cliente = (Dependente)dao.getById(id);
         cliente.setNome(nome);
         cliente.setDtNascimento(dtNasc);
         cliente.setSexo(sexo);

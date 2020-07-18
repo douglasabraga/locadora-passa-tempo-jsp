@@ -4,7 +4,7 @@ package model.application;
 import model.dao.DAOImplement;
 import model.domain.Classe;
 
-public class AplCadastrarClasse extends AplCadastroBase<Classe>{
+public class AplCadastrarClasse extends AplCadastrar<Classe>{
 
     public AplCadastrarClasse() {
         super(new DAOImplement<Classe>(Classe.class));
@@ -15,7 +15,7 @@ public class AplCadastrarClasse extends AplCadastroBase<Classe>{
     }
     
   /*  public void atualizar(int id, String nome, double valor, int prazo) {
-        Classe classe = dao.buscarPorID(id); // Busca a classe no banco de Dados
+        Classe classe = dao.getById(id); // Busca a classe no banco de Dados
         classe.setNome(nome); // Altera o nome
         classe.setValor(valor);
         classe.setPrazoDevolucao(prazo);

@@ -51,7 +51,7 @@
                     <div class="grupo-entrada">
                         <label for="titulo">Titulo</label>
                         <select id="titulo" name="titulo" class="campo" required>
-                            <% for(Titulo titulo : aplTitulo.buscarTodos()){ %>
+                            <% for(Titulo titulo : aplTitulo.getAll()){ %>
                                 <option value="<%=titulo.getId()%>"><%=titulo.getTitulo()%></option>
                             <% } %>
                         </select>

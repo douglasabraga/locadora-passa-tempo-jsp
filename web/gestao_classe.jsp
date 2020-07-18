@@ -17,7 +17,7 @@
                 
                 <% 
                     AplCadastrarClasse apl = new AplCadastrarClasse();
-                    List<Classe> lista = apl.buscarTodos();                    
+                    List<Classe> lista = apl.getAll();                    
                 %>
                 
                 <h1 class="titulo-formulario">Gestão de Classes</h1>

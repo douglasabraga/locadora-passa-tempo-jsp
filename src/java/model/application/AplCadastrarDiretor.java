@@ -4,7 +4,7 @@ package model.application;
 import model.dao.DAOImplement;
 import model.domain.Diretor;
 
-public class AplCadastrarDiretor extends AplCadastroBase<Diretor>{
+public class AplCadastrarDiretor extends AplCadastrar<Diretor>{
 
     public AplCadastrarDiretor() {
         super(new DAOImplement<Diretor>(Diretor.class));
@@ -15,7 +15,7 @@ public class AplCadastrarDiretor extends AplCadastroBase<Diretor>{
     }
     
   /*  public void atualizar(int id, String nome) {
-        Diretor diretor = dao.buscarPorID(id); // Busca o ator no banco de Dados
+        Diretor diretor = dao.getById(id); // Busca o ator no banco de Dados
         diretor.setNome(nome); // Altera o nome
         dao.atualizar(diretor); // Atualiza o ator no banco de Dados
     }*/

@@ -1,20 +1,12 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package controller;
 
 import msg.msgFront;
 import java.io.IOException;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
-//import javax.servlet.annotation.WebServlet;
-
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
 import model.application.AplCadastrarAtor;
 
 //@WebServlet("/CrtCadastrarAtor")
@@ -25,7 +17,6 @@ public class CrtCadastrarAtor extends HttpServlet {
         super();
         apl = new AplCadastrarAtor();
     }
-
     
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -45,9 +36,9 @@ public class CrtCadastrarAtor extends HttpServlet {
             case "excluirator":
                 
                 if(!apl.excluir(Integer.parseInt(request.getParameter("id")))){
-                    msge =  msgFront.msgErro;
+                    msge = msgFront.msgErro;
                 } else {
-                    msge =  msgFront.msgSucesso;
+                    msge = msgFront.msgSucesso;
                 }
                 request.setAttribute("msg", msge);
                 break;

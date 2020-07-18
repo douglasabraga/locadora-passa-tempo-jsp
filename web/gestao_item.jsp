@@ -18,7 +18,7 @@
                 
                 <% 
                     AplCadastrarItem apl = new AplCadastrarItem();
-                    List<Item> lista = apl.buscarTodos();
+                    List<Item> lista = apl.getAll();
                 %>
                 
                 <h1 class="titulo-formulario">Gestão de Item</h1>

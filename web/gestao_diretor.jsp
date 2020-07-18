@@ -17,7 +17,7 @@
                 
                 <% 
                     AplCadastrarDiretor apl = new AplCadastrarDiretor();
-                    List<Diretor> lista = apl.buscarTodos();
+                    List<Diretor> lista = apl.getAll();
                 %>
                 
                 <h1 class="titulo-formulario">Gestão de Diretores</h1>
