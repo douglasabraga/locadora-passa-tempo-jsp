@@ -16,7 +16,7 @@ public class ClienteDAO extends DAOImplement<Cliente>{
         try{
             setSessao(ConexaoHibernate.getSessionFactory().openSession());
             setTransacao(getSessao().beginTransaction());
-            setQuery(getSessao().createQuery("FROM Socio AS s WHERE s.estahAtivo = 1 AND SIZE(s.listaDependentes) < 3"));
+            setQuery(getSessao().createQuery("FROM Socio s WHERE contDep < 3"));
             getTransacao().commit();
             return getQuery().list();
         } catch (HibernateException ex) {

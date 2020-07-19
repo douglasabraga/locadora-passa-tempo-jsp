@@ -58,9 +58,9 @@ public class CrtCadastrarCliente extends HttpServlet {
 
             case "excluircliente":
                 if(!apl.excluir(Integer.parseInt(request.getParameter("id")))) {
-                    msge =  msgFront.msgErro;
+                    msge = msgFront.msgErro;
                 } else {
-                    msge =  msgFront.msgSucesso;
+                    msge = msgFront.msgSucesso;
                 }
                 request.setAttribute("msg", msge);
                 break;

@@ -118,4 +118,23 @@ public class DAOImplement<T> implements DAOGenerico<T>{
         }
         return null;
     }
+    
+    @Override
+    public T atualizar(T objeto) {
+        try {
+            sessao = ConexaoHibernate.getSessionFactory().openSession();
+            transacao = sessao.beginTransaction();
+            sessao.update(objeto);
+            transacao.commit();
+            return objeto;
+        } catch (HibernateException ex) {
+            transacao.rollback();
+        } finally {
+            if(sessao != null) {
+                sessao.close();
+            }
+        }
+       
+        return null;
+    }
 }

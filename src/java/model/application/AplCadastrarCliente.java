@@ -20,34 +20,14 @@ public class AplCadastrarCliente extends AplCadastrar<Cliente>{
         dao.inserir(new Socio(cpf, end, tel, nome, dtNasc, sexo));
     }
     
-   /* public void atualizarSocio(int id, String nome, Date dtNasc, String sexo, String cpf, String end, String tel) {
-        Socio cliente = (Socio)dao.getById(id);
-        cliente.setNome(nome);
-        cliente.setDtNascimento(dtNasc);
-        cliente.setSexo(sexo);
-        cliente.setCpf(cpf);
-        cliente.setEndereco(end);
-        cliente.setTelefone(tel);
-        dao.atualizar(cliente);
-    }*/
-    
     public void inserirDependente(int idSocio, String nome, Date dtNasc, String sexo) {
         Socio socio = (Socio)dao.getById(idSocio);
-        socio.setListaDependentes(new Dependente(nome, dtNasc, sexo));
-        dao.inserir(new Dependente(nome, dtNasc, sexo));
+        socio.setContDep();
+        dao.inserir(new Dependente(nome, dtNasc, sexo, socio));
+        dao.atualizar(socio);
     }
-    
-   /* public void atualizarDependente(int id, String nome, Date dtNasc, String sexo) {
-        Dependente cliente = (Dependente)dao.getById(id);
-        cliente.setNome(nome);
-        cliente.setDtNascimento(dtNasc);
-        cliente.setSexo(sexo);
-        dao.atualizar(cliente); 
-    }*/
     
     public List<Socio> buscarSocios() {
         return dao.buscarSocios();
     }
-    
-    
 }

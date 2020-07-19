@@ -106,6 +106,4 @@ public class Titulo implements Serializable{
     public void setAtores(List<Ator> atores) {
         this.atores = atores;
     }
-
-    
 }

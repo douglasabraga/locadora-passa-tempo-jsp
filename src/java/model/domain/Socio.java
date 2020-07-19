@@ -1,13 +1,8 @@
 package model.domain;
 
-import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.OneToMany;
 import javax.persistence.PrimaryKeyJoinColumn;
 
 @Entity
@@ -19,11 +14,10 @@ public class Socio extends Cliente {
     private String endereco;
     @Column(length = 11, nullable = false)
     private String telefone;
-    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    private List<Dependente> listaDependentes;
-
+    private int contDep;
+            
     public Socio() {
-        listaDependentes = new ArrayList<>();
+        contDep = 0;
     }
 
     public Socio(String cpf, String endereco, String telefone, String nome, Date dtNascimento, String sexo) {
@@ -57,11 +51,16 @@ public class Socio extends Cliente {
         this.telefone = telefone;
     }
 
-    public List<Dependente> getListaDependentes() {
-        return listaDependentes;
+    public int getContDep() {
+        return contDep;
     }
 
-    public void setListaDependentes(Dependente dependente) {
-        this.listaDependentes.add(dependente);
+    public void setContDep() {
+        this.contDep = contDep + 1;
+        System.out.println(contDep);
+    }
+    
+    public void decContDep() {
+        this.contDep -= 1;
     }
 }

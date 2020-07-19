@@ -59,7 +59,11 @@
                                         <td><%=cliente.getDtNascimento()%></td>
                                         <td><%=cliente.getSexo()%></td>
                                         <td><%=cliente.getClass().getSimpleName()%></td>
-                                        <td><%=cliente.isEstahAtivo()%></td>
+                                        <% if(cliente.isEstahAtivo()){%>
+                                            <td>ativo</td>
+                                        <%} else {%>
+                                            <td>não ativo</td>
+                                        <%}%>
                                         <td class="text-center">
                                             <button type="button" class="btn btn-warning">
                                                 <i class="fa fa-edit"></i>
