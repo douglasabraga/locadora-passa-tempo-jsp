@@ -39,7 +39,6 @@
                     List<Ator> lista = apl.getAll();
                 %>
                 
-                
                 <div class="card card-default">
                     <div class="card-header text-center p-1">
                         <h2 class="text-primary">Atores</h2>
@@ -67,7 +66,11 @@
                                         <td><%=ator.getId()%></td>
                                         <td><%=ator.getNome()%></td>
                                         <td class="text-center"> 
-                                            <button type="button" class="btn btn-warning">
+                                            <button type="button" class="btn btn-warning"
+                                                data-toggle="modal"
+                                                data-target="#modalEditar"
+                                                data-id="<%=ator.getId()%>"
+                                                data-nome="<%=ator.getNome()%>">
                                                 <i class="fa fa-edit"></i>
                                             </button>
                                             <button type="button" class="btn btn-danger"
@@ -88,11 +91,22 @@
                 </div>
             </div>
         </section>
-       
+        <%@include  file="includes/modais/modal_editar_ator.jsp"%>
         <%@include  file="includes/modais/modal_excluir.jsp"%>
         <%@include  file="includes/modais/modal_msg.jsp"%>
         <%@include  file="includes/scriptsJs.jsp"%>
+        <script>
+            $('#modalEditar').on('show.bs.modal', function (e) {
+                var id = $(e.relatedTarget).data('id');
+                var nome = $(e.relatedTarget).data('nome');
+//                var route = $(e.relatedTarget).data('route') + id + '&nome=';
+                var modal = $(this);
+
+                modal.find('#nome-autor').val(nome);
+                modal.find('#id').val(id);
+//                modal.find('.modal-footer .btn-primary').attr("onclick", "location.href='${pageContext.request.contextPath}"+route+"'");
+            });
+        </script>
         ${msg};
-   
     </body>
 </html>

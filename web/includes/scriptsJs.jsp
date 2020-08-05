@@ -10,7 +10,6 @@
         var modal = $(this);
 
         modal.find('#texto-normal').text('Deseja deletar esse(a) ' + nome + '?');
-
         modal.find('.modal-footer .btn-danger').attr("onclick", "location.href='${pageContext.request.contextPath}"+route+"'");
     });
 </script>

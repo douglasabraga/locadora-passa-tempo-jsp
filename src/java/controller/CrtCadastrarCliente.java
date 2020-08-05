@@ -73,7 +73,9 @@ public class CrtCadastrarCliente extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         doGet(request, response);
     }
-    
+    /*     <!--   
+        modal.find('.modal-footer .btn-danger').attr("onclick", "location.href='${pageContext.request.contextPath}"+route+"'");
+   -->*/
     
 
 }

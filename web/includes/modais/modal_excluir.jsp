@@ -12,6 +12,7 @@
                 <div class="container-fluid">
                     <span id="texto-normal"></span>
                 </div>
+                
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Não</button>

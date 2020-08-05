@@ -70,7 +70,13 @@
                                         <td><%=classe.getPrazoDevolucao()%></td>
                                         <td><%=classe.getValor()%></td>
                                         <td class="text-center">
-                                             <button type="button" class="btn btn-warning">
+                                             <button type="button" class="btn btn-warning"
+                                                data-toggle="modal"
+                                                data-target="#modalEditar"
+                                                data-id="<%=classe.getId()%>"
+                                                data-nome="<%=classe.getNome()%>"
+                                                data-prazoDev="<%=classe.getPrazoDevolucao()%>"
+                                                data-valor="<%=classe.getValor()%>">
                                                 <i class="fa fa-edit"></i>
                                             </button>
                                             <button type="button" class="btn btn-danger"
@@ -91,10 +97,24 @@
                 </div>
             </div>
         </section>
-                
+        <%@include  file="includes/modais/modal_editar_classe.jsp"%>                
         <%@include  file="includes/modais/modal_excluir.jsp"%>
         <%@include  file="includes/modais/modal_msg.jsp"%>
         <%@include  file="includes/scriptsJs.jsp"%>
+        <script>
+            $('#modalEditar').on('show.bs.modal', function (e) {
+                var id = $(e.relatedTarget).data('id');
+                var nome = $(e.relatedTarget).data('nome');
+                var prazoDev = $(e.relatedTarget).data('prazoDev');
+                var valor = $(e.relatedTarget).data('valor');
+                var modal = $(this);
+
+                modal.find('#id').val(id);
+                modal.find('#txt_nome').val(nome);
+                modal.find('#number_prazo').val(prazoDev);
+                modal.find('#number_valor').val(valor);
+            });
+        </script>
         ${msg}
     </body>
 </html>

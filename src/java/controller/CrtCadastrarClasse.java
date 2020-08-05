@@ -34,7 +34,17 @@ public class CrtCadastrarClasse extends HttpServlet {
                 
                 break;
             
-            case "alterarclasse":
+            case "alterar":
+                if(apl.alterar(Integer.parseInt(request.getParameter("id")),
+                        request.getParameter("txt_nome"),
+                        Double.parseDouble(request.getParameter("number_valor")),
+                        Integer.parseInt(request.getParameter("number_prazo"))) != null){
+                    
+                    msge = msgFront.msgSucesso;
+                }else{
+                    msge = msgFront.msgErro;
+                }
+                request.setAttribute("msg", msge);
                 break;
                 
             case "excluirclasse":

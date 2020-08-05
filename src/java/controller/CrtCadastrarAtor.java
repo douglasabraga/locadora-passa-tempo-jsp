@@ -29,9 +29,6 @@ public class CrtCadastrarAtor extends HttpServlet {
                 String nome = request.getParameter("txt_nome");
                 apl.inserir(nome);
                 break;
-            
-            case "alterarator":
-                break;
                 
             case "excluirator":
                 
@@ -39,6 +36,15 @@ public class CrtCadastrarAtor extends HttpServlet {
                     msge = msgFront.msgErro;
                 } else {
                     msge = msgFront.msgSucesso;
+                }
+                request.setAttribute("msg", msge);
+                break;
+                
+            case "alterar":
+                if(apl.alterar(Integer.parseInt(request.getParameter("id_autor")), request.getParameter("txt_nome")) != null){
+                    msge = msgFront.msgSucesso;
+                }else{
+                    msge = msgFront.msgErro;
                 }
                 request.setAttribute("msg", msge);
                 break;
