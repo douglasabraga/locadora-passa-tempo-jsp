@@ -1,3 +1,4 @@
+<%@page import="model.domain.Socio"%>
 <%@page import="model.domain.Cliente"%>
 <%@page import="model.application.AplCadastrarCliente"%>
 <%@page import="java.util.List"%>
@@ -18,9 +19,29 @@
                 <% 
                     AplCadastrarCliente apl = new AplCadastrarCliente();
                     List<Cliente> lista = apl.getAll();
+//                    List<Socio> listaSocio = apl.buscarSocios();
                 %>
                 
-                <h1 class="titulo-formulario">Gestão de Clientes</h1>
+                <h1 class="titulo-tabela">Gestão de Clientes</h1>
+                
+                <div class="grupo-entrada card card-default">
+                    <div class="card-header text-center p-1">
+                        <h2 class="text-primary">Filtro</h2>
+                    </div>
+                    <div class="card-body" >
+                        <div class="row">
+                            <div class="col-11">
+                                <input type="text" name="nome" id="nome" class="campo" placeholder="Nome">
+                            </div>
+                            <div class="col-1">
+                                <button type="button" class=" botao botao--pesquisar btn-info btn-lg">
+                                    <i class="fa fa-search"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
                 <div class="card card-default">
                     <div class="card-header text-center p-1">
                         <h2 class="text-primary">Clientes</h2>
@@ -30,7 +51,7 @@
                             <table data-toggle="table" class="table table-striped table-hover table-sm" >
                                 <thead>
                                     <tr>
-                                        <th>#</th>
+                                        <th>Cód.</th>
                                         <th>Nome</th>
                                         <th>Dt. Nascimento</th>
                                         <th>Sexo</th>
@@ -42,11 +63,11 @@
                                                     <i class="fa fa-plus"></i> Sócio
                                                 </button>
                                             </a>
-                                            <a href="${pageContext.request.contextPath}/cadastro_dependente.jsp">
-                                                <button type="button" class="btn btn-success">
-                                                    <i class="fa fa-plus"></i> Dep
-                                                </button>
-                                            </a>
+                                                <a href="${pageContext.request.contextPath}/cadastro_dependente.jsp">
+                                                    <button type="button" class="btn btn-success">
+                                                        <i class="fa fa-plus"></i> Dep
+                                                    </button>
+                                                </a>
                                         </th>
                                     </tr>
                                 </thead>

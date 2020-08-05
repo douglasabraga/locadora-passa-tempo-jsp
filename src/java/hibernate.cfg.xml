@@ -56,6 +56,5 @@ Contributor(s):
     <mapping class="model.domain.Locacao"/>
     <mapping class="model.domain.Socio"/>
     <mapping class="model.domain.Titulo"/>
-    <mapping class="model.domain.Usuario"/>
   </session-factory>
 </hibernate-configuration>

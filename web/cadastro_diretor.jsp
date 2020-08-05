@@ -20,7 +20,7 @@
                     <input type="hidden" name="operacao" value="incluirdiretor">
                     
                     <div class="grupo-entrada">
-                        <label for="txt_nome">Nome do Diretor</label>
+                        <label for="txt_nome">Nome</label>
                         <input type="text" name="txt_nome" class="campo" required>
                     </div>
 

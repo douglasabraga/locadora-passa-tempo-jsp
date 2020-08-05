@@ -117,10 +117,10 @@ public class DAOImplement<T> implements DAOGenerico<T>{
             }
         }
         return null;
-    }
+    }    
     
     @Override
-    public T atualizar(T objeto) {
+    public T alterar(T objeto) {
         try {
             sessao = ConexaoHibernate.getSessionFactory().openSession();
             transacao = sessao.beginTransaction();
@@ -134,7 +134,6 @@ public class DAOImplement<T> implements DAOGenerico<T>{
                 sessao.close();
             }
         }
-       
         return null;
     }
 }

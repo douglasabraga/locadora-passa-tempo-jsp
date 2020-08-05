@@ -13,14 +13,33 @@
         </header>
 
         <section class="layout-formulario">
-            <div class="container">
+            <div class="container mb-20">
+                <h1 class="titulo-tabela">Gestão de Titulos</h1>
                 
+                <div class="grupo-entrada card card-default">
+                    <div class="card-header text-center p-1">
+                        <h2 class="text-primary">Filtro</h2>
+                    </div>
+                    <div class="card-body" >
+                        <div class="row">
+                            <div class="col-11">
+                                <input type="text" name="nome" id="nome" class="campo" placeholder="Nome">
+                            </div>
+                            <div class="col-1">
+                                <button type="button" class=" botao botao--pesquisar btn-info btn-lg">
+                                    <i class="fa fa-search"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>    
                 <% 
                     AplCadastrarTitulo apl = new AplCadastrarTitulo();
                     List<Titulo> lista = apl.getAll();
                 %>
   
-                <h1 class="titulo-formulario">Gestão de Titulos</h1>
+            <div class="container">    
                 <div class="card card-default">
                     <div class="card-header text-center p-1">
                         <h2 class="text-primary">Titulos</h2>
@@ -60,10 +79,10 @@
                                         <td><%=titulo.getCategoria()%></td>
                                         <td><%=titulo.getClasse()%></td>
                                         <td class="text-center">
-                                            <button type="button" class=" btn btn btn-warning">
+                                            <button type="button" class=" btn btn-warning">
                                                 <i class="fa fa-edit"></i>
                                             </button>
-                                            <button type="button" class="btn btn btn-danger"
+                                            <button type="button" class="btn btn-danger"
                                                 data-toggle="modal"
                                                 data-target="#modalExcluir"
                                                 data-id="<%=titulo.getId()%>"

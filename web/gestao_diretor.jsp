@@ -20,7 +20,26 @@
                     List<Diretor> lista = apl.getAll();
                 %>
                 
-                <h1 class="titulo-formulario">Gestão de Diretores</h1>
+                <h1 class="titulo-tabela">Gestão de Diretores</h1>
+                
+                <div class="grupo-entrada card card-default">
+                    <div class="card-header text-center p-1">
+                        <h2 class="text-primary">Filtro</h2>
+                    </div>
+                    <div class="card-body" >
+                        <div class="row">
+                            <div class="col-10">
+                                <input type="text" name="nome" id="nome" class="campo" placeholder="Nome">
+                            </div>
+                            <div class="col-1">
+                                <button type="button" class=" botao botao--pesquisar btn-info btn-lg">
+                                    <i class="fa fa-search"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
                 <div class="card card-default">
                     <div class="card-header text-center p-1">
                         <h2 class="text-primary">Diretores</h2>

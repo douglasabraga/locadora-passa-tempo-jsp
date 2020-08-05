@@ -29,7 +29,7 @@
                     
                     <div class="grupo-entrada">
                         <label for="numero">Numero de Série</label>
-                        <input type="text" name="numero" class="campo" required>
+                        <input type="number" min="0" name="numero" class="campo" required>
                     </div>
 
                     <div class="row">

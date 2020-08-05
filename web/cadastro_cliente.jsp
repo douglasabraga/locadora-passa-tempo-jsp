@@ -24,7 +24,7 @@
                     
                     <div class="grupo-entrada">
                         <label for="nome">Nome</label>
-                        <input type="text" name="nome" class="campo" >
+                        <input type="text" name="nome" class="campo" required>
                     </div>
 
                     <div class="row">
@@ -32,14 +32,14 @@
                         <div class="col-sm-8">
                             <div class="grupo-entrada">
                                 <label for="endereco">Endereço</label>
-                                <input type="text" name="endereco" class="campo" >
+                                <input type="text" name="endereco" class="campo" required>
                             </div>
                         </div>
 
                         <div class="col-sm-4">
                             <div class="grupo-entrada">
                                 <label for="data">Data de Nascimento</label>
-                                <input type="date" name="data" id="data-nascimento" class="campo" >
+                                <input type="date" name="data" id="data-nascimento" class="campo" required>
                             </div>
                         </div>
 

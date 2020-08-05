@@ -20,7 +20,7 @@
                     <input type="hidden" name="operacao" value="incluirclasse">
                     
                     <div class="grupo-entrada">
-                        <label for="txt_nome">Nome da Classe</label>
+                        <label for="txt_nome">Nome</label>
                         <input type="text" name="txt_nome" class="campo" required>
                     </div>
                     
