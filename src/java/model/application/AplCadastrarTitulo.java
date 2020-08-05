@@ -34,7 +34,7 @@ public class AplCadastrarTitulo extends AplCadastrar<Titulo>{
         dao.inserir(new Titulo(titulo, ano, sinopse, categoria, classe, diretor, listaAtores));
     }
     
-  /*  public void atualizar(int id, String titulo, int ano, String sinopse, String categoria, int idClasse, int idDiretor, String[] atores) {
+    public Titulo alterar(int id, String titulo, int ano, String sinopse, String categoria, int idClasse, int idDiretor, String[] atores) {
         Classe classe = daoClasse.getById(idClasse);
         Diretor diretor = daoDiretor.getById(idDiretor);
         
@@ -53,7 +53,7 @@ public class AplCadastrarTitulo extends AplCadastrar<Titulo>{
         _titulo.setClasse(classe);
         _titulo.setDiretor(diretor);
         _titulo.setAtores(atorez);
-        dao.atualizar(_titulo); 
-    }*/
+        return dao.alterar(_titulo); 
+    }
     
 }

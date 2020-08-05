@@ -37,7 +37,21 @@ public class CrtCadastrarTitulo extends HttpServlet {
                             request.getParameterValues("ator"));
                 break;
                 
-            case "alterartitulo":
+            case "alterar":
+                if(apl.alterar(Integer.parseInt(request.getParameter("id")),
+                            request.getParameter("titulo"),
+                            Integer.parseInt(request.getParameter("ano")),
+                            request.getParameter("sinopse"),
+                            request.getParameter("categoria"),
+                            Integer.parseInt(request.getParameter("classe")),
+                            Integer.parseInt(request.getParameter("diretor")),
+                            request.getParameterValues("ator"))  == null) {
+                    
+                    msge =  msgFront.msgErro;
+                } else {
+                    msge =  msgFront.msgSucesso;
+                }
+                request.setAttribute("msg", msge);
                 break;
             
             case "excluirtitulo":

@@ -79,7 +79,18 @@
                                         <td><%=titulo.getCategoria()%></td>
                                         <td><%=titulo.getClasse()%></td>
                                         <td class="text-center">
-                                            <button type="button" class=" btn btn-warning">
+                                            <button type="button" class=" btn btn-warning"
+                                                data-toggle="modal"
+                                                data-target="#modalEditar"
+                                                data-id="<%=titulo.getId()%>"
+                                                data-nome="<%=titulo.getTitulo()%>"
+                                                data-atores="<%=titulo.getAtores()%>"
+                                                data-diretor="<%=titulo.getDiretor().getId()%>"
+                                                data-ano="<%=titulo.getAno()%>"
+                                                data-sinopse="<%=titulo.getSinopse()%>"
+                                                data-categoria="<%=titulo.getCategoria()%>"
+                                                data-classe="<%=titulo.getClasse().getId()%>"
+                                                >
                                                 <i class="fa fa-edit"></i>
                                             </button>
                                             <button type="button" class="btn btn-danger"
@@ -103,10 +114,33 @@
                 </div>
             </div>
         </section>        
-        
+        <%@include  file="includes/modais/modal_editar_titulo.jsp"%>
         <%@include  file="includes/modais/modal_excluir.jsp"%>
         <%@include  file="includes/modais/modal_msg.jsp"%>
         <%@include  file="includes/scriptsJs.jsp"%>
+        <script>
+            $('#modalEditar').on('show.bs.modal', function (e) {
+                var id = $(e.relatedTarget).data('id');
+                var nome = $(e.relatedTarget).data('nome');
+//                var atores[] = $(e.relatedTarget).data('atores');
+                var diretor = $(e.relatedTarget).data('diretor');
+                var ano = $(e.relatedTarget).data('ano');
+                var sinopse = $(e.relatedTarget).data('sinopse');
+                var categoria = $(e.relatedTarget).data('categoria');
+                var classe = $(e.relatedTarget).data('classe');
+                
+                var modal = $(this);
+
+                modal.find('#id').val(id);
+                modal.find('#titulo').val(nome);
+//                modal.find('#ator').val(id);
+                modal.find('#diretor').val(diretor);
+                modal.find('#ano').val(ano);
+                modal.find('#sinopse').val(sinopse);
+                modal.find('#categoria').val(categoria);
+                modal.find('#classe').val(classe);
+            });
+        </script>
         ${msg};
         
     </body>
