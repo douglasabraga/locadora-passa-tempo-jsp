@@ -14,9 +14,9 @@ public class AplCadastrarDiretor extends AplCadastrar<Diretor>{
         dao.inserir(new Diretor(nome.trim())); // Insere um novo ator no banco de Dados
     }
     
-  /*  public void atualizar(int id, String nome) {
+    public Diretor alterar(int id, String nome) {
         Diretor diretor = dao.getById(id); // Busca o ator no banco de Dados
         diretor.setNome(nome); // Altera o nome
-        dao.atualizar(diretor); // Atualiza o ator no banco de Dados
-    }*/
+        return dao.alterar(diretor); // Atualiza o ator no banco de Dados
+    }
 }

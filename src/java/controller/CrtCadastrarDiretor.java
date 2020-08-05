@@ -31,7 +31,13 @@ public class CrtCadastrarDiretor extends HttpServlet {
                 apl.inserir(nome);
                 break;
             
-            case "alterardiretor":
+            case "alterar":
+                if(apl.alterar(Integer.parseInt(request.getParameter("id")), request.getParameter("txt_nome")) != null){
+                    msge = msgFront.msgSucesso;
+                }else{
+                    msge = msgFront.msgErro;
+                }
+                request.setAttribute("msg", msge);
                 break;
                 
             case "excluirdiretor":

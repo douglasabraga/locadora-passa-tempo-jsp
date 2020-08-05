@@ -67,7 +67,11 @@
                                         <td><%=diretor.getId()%></td>
                                         <td><%=diretor.getNome()%></td>
                                         <td class="text-center"> 
-                                            <button type="button" class="btn btn-warning">
+                                            <button type="button" class="btn btn-warning"
+                                                data-toggle="modal"
+                                                data-target="#modalEditar"
+                                                data-id="<%=diretor.getId()%>"
+                                                data-nome="<%=diretor.getNome()%>">
                                                 <i class="fa fa-edit"></i>
                                             </button>
                                             <button type="button" class="btn btn-danger"
@@ -88,10 +92,20 @@
                 </div>
             </div>
         </section>
-                
+        <%@include  file="includes/modais/modal_editar_diretor.jsp"%>         
         <%@include  file="includes/modais/modal_excluir.jsp"%>
         <%@include  file="includes/modais/modal_msg.jsp"%>
         <%@include  file="includes/scriptsJs.jsp"%>
+        <script>
+            $('#modalEditar').on('show.bs.modal', function (e) {
+                var id = $(e.relatedTarget).data('id');
+                var nome = $(e.relatedTarget).data('nome');
+                var modal = $(this);
+                
+                modal.find('#id').val(id);
+                modal.find('#txt_nome').val(nome);
+            });
+        </script>
         ${msg};
         
     </body>
