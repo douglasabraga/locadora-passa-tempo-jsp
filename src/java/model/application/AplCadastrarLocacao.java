@@ -34,4 +34,11 @@ public class AplCadastrarLocacao extends AplCadastrar<Locacao>{
         return dao.alterar(locacao); 
     }
     
+    public Locacao devolver(int id, double multa){
+        Locacao locado = dao.getById(id);
+        locado.setMultaCobrada(multa);
+        locado.setDtDevolucaoEfetiva(new Date());
+        return dao.alterar(locado);
+    }
+    
 }

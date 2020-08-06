@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import model.application.AplCadastrarLocacao;
+import model.domain.Locacao;
 import msg.msgFront;
 
 @WebServlet("/CrtCadastrarLocacao")
@@ -72,6 +73,19 @@ public class CrtCadastrarLocacao extends HttpServlet {
                 }
                 request.setAttribute("msg", msge);
                 break;
+                
+             case "devolver":
+                 Locacao locacao = apl.devolver(Integer.parseInt(request.getParameter("id")),
+                                Double.parseDouble(request.getParameter("multa")));
+                if(locacao == null){
+                    msge = msgFront.msgErro;
+                } else {
+                    msge = msgFront.msgLocacao + (locacao.getValorCobrado()+locacao.getMultaCobrada()) + " R$" + "');"+
+                            "});\n"+
+                            "</script>" ;
+                }
+               request.setAttribute("msg", msge);
+               break;
         }
         
         RequestDispatcher destino = request.getRequestDispatcher("gestao_locacao.jsp");

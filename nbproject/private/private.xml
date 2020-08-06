@@ -4,6 +4,15 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
             <file>file:/C:/Users/dougl/Documents/NetBeansProjects/locadora-passa-tempo/src/java/controller/CrtCadastrarCliente.java</file>
+            <file>file:/C:/Users/dougl/Documents/NetBeansProjects/locadora-passa-tempo/src/java/msg/msgFront.java</file>
+            <file>file:/C:/Users/dougl/Documents/NetBeansProjects/locadora-passa-tempo/web/includes/modais/modal_editar_classe.jsp</file>
+            <file>file:/C:/Users/dougl/Documents/NetBeansProjects/locadora-passa-tempo/web/includes/modais/modal_editar_locacao.jsp</file>
+            <file>file:/C:/Users/dougl/Documents/NetBeansProjects/locadora-passa-tempo/src/java/model/application/AplCadastrarLocacao.java</file>
+            <file>file:/C:/Users/dougl/Documents/NetBeansProjects/locadora-passa-tempo/web/includes/modais/modal_editar_socio.jsp</file>
+            <file>file:/C:/Users/dougl/Documents/NetBeansProjects/locadora-passa-tempo/web/gestao_locacao.jsp</file>
+            <file>file:/C:/Users/dougl/Documents/NetBeansProjects/locadora-passa-tempo/web/includes/modais/modal_editar_ator.jsp</file>
+            <file>file:/C:/Users/dougl/Documents/NetBeansProjects/locadora-passa-tempo/web/gestao_classe.jsp</file>
+            <file>file:/C:/Users/dougl/Documents/NetBeansProjects/locadora-passa-tempo/src/java/controller/CrtCadastrarLocacao.java</file>
         </group>
     </open-files>
 </project-private>

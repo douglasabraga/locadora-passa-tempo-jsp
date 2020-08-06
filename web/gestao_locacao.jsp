@@ -77,6 +77,14 @@
                                         <td><%=locacao.getDtLocacao()%></td>
                                         <td><%=locacao.getDtDevolucaoPrevista()%></td>
                                         <td class="text-center">
+                                            <button type="button" class="btn btn-info"
+                                                data-toggle="modal"
+                                                data-target="#modalDevolucao"
+                                                data-id="<%=locacao.getId()%>"
+                                                data-data="<%=locacao.getDtDevolucaoPrevista()%>"
+                                                data-valor="<%=locacao.getItem().getTitulo().getClasse().getValor()%>">
+                                                <i class="fa fa-check"></i>
+                                            </button>
                                             <button type="button" class="btn btn-warning"
                                                 data-toggle="modal"
                                                 data-target="#modalEditar"
@@ -105,11 +113,28 @@
                 </div>
             </div>
         </section>
+        <%@include  file="includes/modais/modal_devolucao.jsp"%>                        
         <%@include  file="includes/modais/modal_editar_locacao.jsp"%>
         <%@include  file="includes/modais/modal_excluir.jsp"%>
         <%@include  file="includes/modais/modal_msg.jsp"%>
         <%@include  file="includes/scriptsJs.jsp"%>
         <script>
+            $('#modalDevolucao').on('show.bs.modal', function (e) {
+                var id = $(e.relatedTarget).data('id');
+//                var cliente = $(e.relatedTarget).data('cliente');
+//                var item = $(e.relatedTarget).data('item');
+                var valor = $(e.relatedTarget).data('valor');
+                var data = $(e.relatedTarget).data('data');
+                var modal = $(this);
+
+                modal.find('#id_dev').val(id);
+//                modal.find('#cliente').val(cliente);
+//                modal.find('#item').val(item);
+                modal.find('#valor_dev').val(valor);
+                modal.find('#data_dev').val(data);
+//                modal.find('#dataEfet').val(new Date());
+            });
+            
             $('#modalEditar').on('show.bs.modal', function (e) {
                 var id = $(e.relatedTarget).data('id');
                 var cliente = $(e.relatedTarget).data('cliente');

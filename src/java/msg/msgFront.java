@@ -14,8 +14,15 @@ public class msgFront {
                             "$(document).ready(function() {"+
                             "$('#modalMsg').modal('show');"
                             + "var modal = $(this);"
-                            + "modal.find('#texto-titulo').text('Erro ao deletar!');"
+                            + "modal.find('#texto-titulo').text('Erro!');"
                             + "modal.find('#txt-normal').text('Verifique suas dependências!');"+
                             "});\n"+
                             "</script>"; 
+    
+    public static String msgLocacao = "<script>"+
+                            "$(document).ready(function() {"+
+                            "$('#modalMsg').modal('show');"
+                            + "var modal = $(this);"
+                            + "modal.find('#texto-titulo').text('Sucesso!');"
+                            + "modal.find('#txt-normal').text('Valor total a ser cobrado =  ";
 }
