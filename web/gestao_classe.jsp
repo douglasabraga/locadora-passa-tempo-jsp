@@ -109,7 +109,7 @@
                 var valor = $(e.relatedTarget).data('valor');
                 var modal = $(this);
 
-                modal.find('.id').val(id);
+                modal.find('#id').val(id);
                 modal.find('#txt_nome').val(nome);
                 modal.find('#prazo').val(prazo);
                 modal.find('#number_valor').val(valor);

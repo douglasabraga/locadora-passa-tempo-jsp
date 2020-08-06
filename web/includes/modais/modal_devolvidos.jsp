@@ -47,7 +47,7 @@
                                                 <td><%=item.getDtLocacao()%></td>
                                                 <td><%=item.getDtDevolucaoPrevista()%></td>
                                                 <td><%=item.getDtDevolucaoEfetiva()%></td>
-                                                <td><%=item.getItem().getTitulo().getClasse().getValor()%></td>
+                                                <td><%=item.getValorCobrado()%></td>
                                                 <td><%=item.getMultaCobrada()%></td>
                                             </tr>
                                         <% } %>

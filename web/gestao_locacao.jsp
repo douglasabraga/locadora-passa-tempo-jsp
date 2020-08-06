@@ -81,7 +81,7 @@
                                                 <td><%=locacao.getId()%></td>
                                                 <td><%=locacao.getCliente().getNome()%></td>
                                                 <td><%=locacao.getItem().getNumSerie()%></td>
-                                                <td><%=locacao.getItem().getTitulo().getClasse().getValor()%></td>
+                                                <td><%=locacao.getValorCobrado()%></td>
                                                 <td><%=locacao.getDtLocacao()%></td>
                                                 <td><%=locacao.getDtDevolucaoPrevista()%></td>
                                                 <td class="text-center">
@@ -90,7 +90,7 @@
                                                         data-target="#modalDevolucao"
                                                         data-id="<%=locacao.getId()%>"
                                                         data-data="<%=locacao.getDtDevolucaoPrevista()%>"
-                                                        data-valor="<%=locacao.getItem().getTitulo().getClasse().getValor()%>">
+                                                        data-valor="<%=locacao.getValorCobrado()%>">
                                                         <i class="fa fa-check"></i>
                                                     </button>
                                                     <button type="button" class="btn btn-warning"
@@ -99,7 +99,7 @@
                                                         data-id="<%=locacao.getId()%>"
                                                         data-cliente="<%=locacao.getCliente().getId()%>"
                                                         data-item="<%=locacao.getItem().getId()%>"
-                                                        data-valor="<%=locacao.getItem().getTitulo().getClasse().getValor()%>"
+                                                        data-valor="<%=locacao.getValorCobrado()%>"
                                                         data-data="<%=locacao.getDtDevolucaoPrevista()%>">
                                                         <i class="fa fa-edit"></i>
                                                     </button>
@@ -129,6 +129,8 @@
         <%@include  file="includes/modais/modal_msg.jsp"%>
         <%@include  file="includes/scriptsJs.jsp"%>
         <script>
+            
+            
             $('#modalDevolucao').on('show.bs.modal', function (e) {
                 var id = $(e.relatedTarget).data('id');
                 var valor = $(e.relatedTarget).data('valor');

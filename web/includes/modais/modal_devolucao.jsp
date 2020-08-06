@@ -12,7 +12,7 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h3 class="modal-title" class="titulo-formulario">Devolução</h3>
+                <h3 class="modal-title" class="titulo-formulario">Devolução <span id="textoAux"></span> </h3>
                 <button type="button" class="close" data-dismiss="modal">
                     <span>&times;</span>
                 </button>
@@ -37,7 +37,7 @@
                             <div class="col-sm-5">
                                 <label for="dataPrev">Data Dev. Efetivada</label>
 
-                                <input type="date" name="dataEfet" id="dataEfet" value="<%=result%>" class="campo" required>
+                                <input type="date" name="dataEfet" id="dataEfet" value="<%=result%>" class="campo" disabled>
                             </div>
                         </div>
                         <div class="row">
