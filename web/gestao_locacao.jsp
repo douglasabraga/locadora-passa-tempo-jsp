@@ -63,48 +63,57 @@
                                                     <i class="fa fa-plus"></i>
                                                 </button>
                                             </a>
+                                            
+                                                <button type="button" class="btn btn-secondary"
+                                                        data-toggle="modal"
+                                                        data-target="#modalDevolvidos">
+                                                    <i class="fa fa-eye"></i>
+                                                </button>
+                                            </a
                                         </th>
                                     </tr>
                                 </thead>
 
                                 <tbody>
                                     <% for(Locacao locacao : lista) { %>
-                                    <tr>
-                                        <td><%=locacao.getId()%></td>
-                                        <td><%=locacao.getCliente().getNome()%></td>
-                                        <td><%=locacao.getItem().getNumSerie()%></td>
-                                        <td><%=locacao.getItem().getTitulo().getClasse().getValor()%></td>
-                                        <td><%=locacao.getDtLocacao()%></td>
-                                        <td><%=locacao.getDtDevolucaoPrevista()%></td>
-                                        <td class="text-center">
-                                            <button type="button" class="btn btn-info"
-                                                data-toggle="modal"
-                                                data-target="#modalDevolucao"
-                                                data-id="<%=locacao.getId()%>"
-                                                data-data="<%=locacao.getDtDevolucaoPrevista()%>"
-                                                data-valor="<%=locacao.getItem().getTitulo().getClasse().getValor()%>">
-                                                <i class="fa fa-check"></i>
-                                            </button>
-                                            <button type="button" class="btn btn-warning"
-                                                data-toggle="modal"
-                                                data-target="#modalEditar"
-                                                data-id="<%=locacao.getId()%>"
-                                                data-cliente="<%=locacao.getCliente().getId()%>"
-                                                data-item="<%=locacao.getItem().getId()%>"
-                                                data-valor="<%=locacao.getItem().getTitulo().getClasse().getValor()%>"
-                                                data-data="<%=locacao.getDtDevolucaoPrevista()%>">
-                                                <i class="fa fa-edit"></i>
-                                            </button>
-                                            <button type="button" class="btn btn-danger"
-                                                data-toggle="modal"
-                                                data-target="#modalExcluir"
-                                                data-id="<%=locacao.getId()%>"
-                                                data-nome="locacao"
-                                                data-route="/CrtCadastrarLocacao?operacao=excluirlocacao&id=">
-                                                <i class="fa fa-trash"></i>
-                                            </button>
-                                        </td>
-                                    </tr>
+                                        <% if(locacao.getDtDevolucaoEfetiva() == null) {%>
+                                            <tr>
+                                                <td><%=locacao.getId()%></td>
+                                                <td><%=locacao.getCliente().getNome()%></td>
+                                                <td><%=locacao.getItem().getNumSerie()%></td>
+                                                <td><%=locacao.getItem().getTitulo().getClasse().getValor()%></td>
+                                                <td><%=locacao.getDtLocacao()%></td>
+                                                <td><%=locacao.getDtDevolucaoPrevista()%></td>
+                                                <td class="text-center">
+                                                    <button type="button" class="btn btn-info"
+                                                        data-toggle="modal"
+                                                        data-target="#modalDevolucao"
+                                                        data-id="<%=locacao.getId()%>"
+                                                        data-data="<%=locacao.getDtDevolucaoPrevista()%>"
+                                                        data-valor="<%=locacao.getItem().getTitulo().getClasse().getValor()%>">
+                                                        <i class="fa fa-check"></i>
+                                                    </button>
+                                                    <button type="button" class="btn btn-warning"
+                                                        data-toggle="modal"
+                                                        data-target="#modalEditar"
+                                                        data-id="<%=locacao.getId()%>"
+                                                        data-cliente="<%=locacao.getCliente().getId()%>"
+                                                        data-item="<%=locacao.getItem().getId()%>"
+                                                        data-valor="<%=locacao.getItem().getTitulo().getClasse().getValor()%>"
+                                                        data-data="<%=locacao.getDtDevolucaoPrevista()%>">
+                                                        <i class="fa fa-edit"></i>
+                                                    </button>
+                                                    <button type="button" class="btn btn-danger"
+                                                        data-toggle="modal"
+                                                        data-target="#modalExcluir"
+                                                        data-id="<%=locacao.getId()%>"
+                                                        data-nome="locacao"
+                                                        data-route="/CrtCadastrarLocacao?operacao=excluirlocacao&id=">
+                                                        <i class="fa fa-trash"></i>
+                                                    </button>
+                                                </td>
+                                            </tr>
+                                        <% } %>
                                     <% } %>
                                 </tbody>
                             </table>
@@ -113,6 +122,7 @@
                 </div>
             </div>
         </section>
+        <%@include  file="includes/modais/modal_devolvidos.jsp"%>                                                        
         <%@include  file="includes/modais/modal_devolucao.jsp"%>                        
         <%@include  file="includes/modais/modal_editar_locacao.jsp"%>
         <%@include  file="includes/modais/modal_excluir.jsp"%>
@@ -121,18 +131,13 @@
         <script>
             $('#modalDevolucao').on('show.bs.modal', function (e) {
                 var id = $(e.relatedTarget).data('id');
-//                var cliente = $(e.relatedTarget).data('cliente');
-//                var item = $(e.relatedTarget).data('item');
                 var valor = $(e.relatedTarget).data('valor');
                 var data = $(e.relatedTarget).data('data');
                 var modal = $(this);
 
                 modal.find('#id_dev').val(id);
-//                modal.find('#cliente').val(cliente);
-//                modal.find('#item').val(item);
                 modal.find('#valor_dev').val(valor);
                 modal.find('#data_dev').val(data);
-//                modal.find('#dataEfet').val(new Date());
             });
             
             $('#modalEditar').on('show.bs.modal', function (e) {
