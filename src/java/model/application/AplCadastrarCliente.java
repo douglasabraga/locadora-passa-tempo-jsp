@@ -20,11 +20,30 @@ public class AplCadastrarCliente extends AplCadastrar<Cliente>{
         dao.inserir(new Socio(cpf, end, tel, nome, dtNasc, sexo));
     }
     
+    public Cliente alterarSocio(int id, String nome, Date dtNasc, String sexo, String cpf, String end, String tel) {
+        Socio socio = (Socio)dao.getById(id);
+        socio.setNome(nome);
+        socio.setDtNascimento(dtNasc);
+        socio.setSexo(sexo);
+        socio.setCpf(cpf);
+        socio.setEndereco(end);
+        socio.setTelefone(tel);
+        return dao.alterar(socio);
+    }
+    
     public void inserirDependente(int idSocio, String nome, Date dtNasc, String sexo) {
         Socio socio = (Socio)dao.getById(idSocio);
         socio.setContDep();
         dao.inserir(new Dependente(nome, dtNasc, sexo, socio));
         dao.alterar(socio);
+    }
+    
+    public Cliente alterarDependente(int id, String nome, Date dtNasc, String sexo) {
+        Dependente cliente = (Dependente)dao.getById(id);
+        cliente.setNome(nome);
+        cliente.setDtNascimento(dtNasc);
+        cliente.setSexo(sexo);
+        return dao.alterar(cliente); 
     }
     
     public boolean excluirCliente(int idCliente) {

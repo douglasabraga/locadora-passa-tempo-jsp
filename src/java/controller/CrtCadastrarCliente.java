@@ -55,7 +55,46 @@ public class CrtCadastrarCliente extends HttpServlet {
                     }
                 }
                 break;
+                
+            case "alterarDependente":
+                try {
+                    if(apl.alterarDependente(Integer.parseInt(request.getParameter("id")),
+                            request.getParameter("nome"),
+                            new SimpleDateFormat("yyyy-MM-dd").parse(request.getParameter("data")),
+                            request.getParameter("sexo")) == null){
+                        
+                        msge = msgFront.msgErro;
+                    } else {
+                        msge = msgFront.msgSucesso;
+                    }
+                    request.setAttribute("msg", msge);
 
+                } catch (ParseException ex) {
+                    ex.printStackTrace();
+                }
+                break;
+                
+            case "alterarSocio":
+                try {
+                    if(apl.alterarSocio(Integer.parseInt(request.getParameter("id")),
+                            request.getParameter("nome"),
+                            new SimpleDateFormat("yyyy-MM-dd").parse(request.getParameter("data")),
+                            request.getParameter("sexo"),
+                            request.getParameter("cpf"),
+                            request.getParameter("endereco"),
+                            request.getParameter("telefone")) == null){
+                        
+                        msge = msgFront.msgSucesso;
+                    } else {
+                        msge = msgFront.msgSucesso;
+                    }
+                    request.setAttribute("msg", msge);
+                    
+                } catch (ParseException ex) {
+                    ex.printStackTrace();
+                }
+                break;
+                
             case "excluircliente":
                 if(!apl.excluir(Integer.parseInt(request.getParameter("id")))) {
                     msge = msgFront.msgErro;
@@ -73,9 +112,4 @@ public class CrtCadastrarCliente extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         doGet(request, response);
     }
-    /*     <!--   
-        modal.find('.modal-footer .btn-danger').attr("onclick", "location.href='${pageContext.request.contextPath}"+route+"'");
-   -->*/
-    
-
 }

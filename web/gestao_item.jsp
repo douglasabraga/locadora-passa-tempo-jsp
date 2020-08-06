@@ -74,7 +74,14 @@
                                         <td><%=item.getTipoItem()%></td>
                                         <td><%=item.getTitulo().getTitulo()%></td>
                                         <td class="text-center">
-                                            <button type="button" class="btn btn-warning">
+                                            <button type="button" class="btn btn-warning"
+                                                data-toggle="modal"
+                                                data-target="#modalEditar"
+                                                data-id="<%=item.getId()%>"
+                                                data-numero="<%=item.getNumSerie()%>"
+                                                data-data="<%=item.getDtAquisicao()%>"
+                                                data-tipo="<%=item.getTipoItem()%>"
+                                                data-titulo="<%=item.getTitulo().getId()%>">
                                                 <i class="fa fa-edit"></i>
                                             </button>
                                             <button type="button" class="btn btn-danger"
@@ -95,10 +102,26 @@
                 </div>
             </div>
         </section>
-                                
+        <%@include  file="includes/modais/modal_editar_item.jsp"%>                
         <%@include  file="includes/modais/modal_excluir.jsp"%>
         <%@include  file="includes/modais/modal_msg.jsp"%>
         <%@include  file="includes/scriptsJs.jsp"%>
+        <script>
+            $('#modalEditar').on('show.bs.modal', function (e) {
+                var id = $(e.relatedTarget).data('id');
+                var numero = $(e.relatedTarget).data('numero');
+                var data = $(e.relatedTarget).data('data');
+                var tipo = $(e.relatedTarget).data('tipo');
+                var titulo = $(e.relatedTarget).data('titulo');
+                var modal = $(this);
+
+                modal.find('#id').val(id);
+                modal.find('#numero').val(numero);
+                modal.find('#data').val(data);
+                modal.find('#tipo').val(tipo);
+                modal.find('#titulo').val(titulo);
+            });
+        </script>
         ${msg};
         
     </body>

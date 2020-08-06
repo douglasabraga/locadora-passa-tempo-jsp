@@ -75,7 +75,7 @@
                                                 data-target="#modalEditar"
                                                 data-id="<%=classe.getId()%>"
                                                 data-nome="<%=classe.getNome()%>"
-                                                data-prazoDev="<%=classe.getPrazoDevolucao()%>"
+                                                data-prazo="<%=classe.getPrazoDevolucao()%>"
                                                 data-valor="<%=classe.getValor()%>">
                                                 <i class="fa fa-edit"></i>
                                             </button>
@@ -105,13 +105,13 @@
             $('#modalEditar').on('show.bs.modal', function (e) {
                 var id = $(e.relatedTarget).data('id');
                 var nome = $(e.relatedTarget).data('nome');
-                var prazoDev = $(e.relatedTarget).data('prazoDev');
+                var prazo = $(e.relatedTarget).data('prazo');
                 var valor = $(e.relatedTarget).data('valor');
                 var modal = $(this);
 
-                modal.find('#id').val(id);
+                modal.find('.id').val(id);
                 modal.find('#txt_nome').val(nome);
-                modal.find('#number_prazo').val(prazoDev);
+                modal.find('#prazo').val(prazo);
                 modal.find('#number_valor').val(valor);
             });
         </script>

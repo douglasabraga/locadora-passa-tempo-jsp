@@ -1,3 +1,4 @@
+<%@page import="model.domain.Dependente"%>
 <%@page import="model.domain.Socio"%>
 <%@page import="model.domain.Cliente"%>
 <%@page import="model.application.AplCadastrarCliente"%>
@@ -86,7 +87,27 @@
                                             <td>não ativo</td>
                                         <%}%>
                                         <td class="text-center">
-                                            <button type="button" class="btn btn-warning">
+                                            <button type="button" class="btn btn-warning"
+                                                data-toggle="modal"
+                                                data-id="<%=cliente.getId()%>"
+                                                <% if(cliente.getClass().getSimpleName().equals("Socio")){
+                                                    Socio socio = (Socio)apl.getById(cliente.getId());%>
+                                                    data-target="#modalEditarSocio" 
+                                                    data-nome="<%=socio.getNome()%>"
+                                                    data-data="<%=socio.getDtNascimento()%>"
+                                                    data-sexo="<%=socio.getSexo()%>"
+                                                    data-telefone="<%=socio.getTelefone()%>"
+                                                    data-cpf="<%=socio.getCpf()%>"
+                                                    data-endereco="<%=socio.getEndereco()%>"
+                                                <%} else{ 
+                                                    Dependente dependente = (Dependente)apl.getById(cliente.getId());%>
+                                                    data-target="#modalEditarDependente" 
+                                                    data-nome="<%=dependente.getNome()%>"
+                                                    data-data="<%=dependente.getDtNascimento()%>"
+                                                    data-sexo="<%=dependente.getSexo()%>"
+                                                    
+                                                <%}%>
+                                                >
                                                 <i class="fa fa-edit"></i>
                                             </button>
                                             <button type="button" class="btn btn-danger"
@@ -107,10 +128,45 @@
                 </div>
             </div>
         </section>
-                                
+        <%@include  file="includes/modais/modal_editar_socio.jsp"%>  
+        <%@include  file="includes/modais/modal_editar_dependente.jsp"%>
         <%@include  file="includes/modais/modal_excluir.jsp"%>
         <%@include  file="includes/modais/modal_msg.jsp"%>
         <%@include  file="includes/scriptsJs.jsp"%>
         ${msg}
+        <script>
+            $('#modalEditarSocio').on('show.bs.modal', function (e) {
+                var id = $(e.relatedTarget).data('id');
+                var nome = $(e.relatedTarget).data('nome');
+                var data = $(e.relatedTarget).data('data');
+                var sexo = $(e.relatedTarget).data('sexo');
+                var telefone = $(e.relatedTarget).data('telefone');
+                var cpf = $(e.relatedTarget).data('cpf');
+                var endereco = $(e.relatedTarget).data('endereco');
+                var modal = $(this);
+
+                modal.find('#id').val(id);
+                modal.find('#nome').val(nome);
+                modal.find('#data').val(data);
+                modal.find('#sexo').val(sexo);
+                modal.find('#telefone').val(telefone);
+                modal.find('#cpf').val(cpf);
+                modal.find('#endereco').val(endereco);
+                
+            });
+            
+            $('#modalEditarDependente').on('show.bs.modal', function (e) {
+                var id = $(e.relatedTarget).data('id');
+                var nome = $(e.relatedTarget).data('nome');
+                var data = $(e.relatedTarget).data('data');
+                var sexo = $(e.relatedTarget).data('sexo');
+                var modal = $(this);
+
+                modal.find('#id').val(id);
+                modal.find('#nome').val(nome);
+                modal.find('#data').val(data);
+                modal.find('#sexo').val(sexo);
+            });
+        </script>
     </body>
 </html>

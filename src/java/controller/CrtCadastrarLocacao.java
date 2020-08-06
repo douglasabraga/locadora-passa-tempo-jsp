@@ -3,6 +3,8 @@ package controller;
 import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -41,7 +43,25 @@ public class CrtCadastrarLocacao extends HttpServlet {
                 }
                 break;
             
-            case "alterarlocacao":
+            case "alterar":
+                {
+                    try {
+                        if(apl.alterar(Integer.parseInt(request.getParameter("id")),
+                                new SimpleDateFormat("yyyy-MM-dd").parse(request.getParameter("data")),
+                                Double.parseDouble(request.getParameter("valor")),
+                                Integer.parseInt(request.getParameter("item")),
+                                Integer.parseInt(request.getParameter("cliente"))) == null) {
+
+                            msge = msgFront.msgErro;
+                        } else {
+                            msge = msgFront.msgSucesso;
+                        }
+                        request.setAttribute("msg", msge);       
+
+                    } catch (ParseException ex) {
+                        Logger.getLogger(CrtCadastrarLocacao.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                }
                 break;
                 
             case "excluirlocacao":

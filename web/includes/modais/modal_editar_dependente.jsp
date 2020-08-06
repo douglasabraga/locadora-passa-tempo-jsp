@@ -1,9 +1,9 @@
 <!-- Modal EDITAR -->
-<div class="modal fade" id="modalEditar" tabindex="-1" role="dialog">
+<div class="modal fade" id="modalEditarDependente" tabindex="-1" role="dialog">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h3 class="modal-title" class="titulo-formulario">Alterar Classe</h3>
+                <h3 class="modal-title" class="titulo-formulario">Alterar Dependente</h3>
                 <button type="button" class="close" data-dismiss="modal">
                     <span>&times;</span>
                 </button>
@@ -12,35 +12,38 @@
             <div class="modal-body">
                 <div class="container">
                     
-                    <form  method="post" action="CrtCadastrarClasse">
+                    <form  method="post" action="CrtCadastrarCliente">
                         
-                        <input type="hidden" name="operacao" value="alterar">
+                        <input type="hidden" name="operacao" value="alterarDependente">
                         
                         <div class="grupo-entrada">
                             <div class="row">
                                 <div class="col-2">
                                     <label for="id">Id</label>
-                                    <input type="number" name="id" id="id" class="campo">
+                                    <input type="number" name="id" id="id" class="campo" required>
                                 </div>
                                 <div class="col-10">
-                                    <label for="txt_nome">Nome</label>
-                                    <input type="text" name="txt_nome" id="txt_nome" class="campo" required>
+                                    <label for="nome">Nome</label>
+                                    <input type="text" name="nome" id="nome" class="campo" required>
                                 </div>
                             </div>
                         </div>
-
+                        
                         <div class="row">
-                            
                             <div class="col-sm-6">
                                 <div class="grupo-entrada">
-                                    <label for="prazo">Prazo Devolução</label>
-                                    <input type="number"  name="prazo" id="prazo"  class="campo" required>
+                                    <label for="data">Data de Nascimento</label>
+                                    <input type="date" name="data" id="data" class="campo" required>
                                 </div>
                             </div>
+
                             <div class="col-sm-6">
                                 <div class="grupo-entrada">
-                                    <label for="number_valor">Valor</label>
-                                    <input type="number" name="number_valor" id="number_valor" min="0.00" step="0.01" class="campo" required>
+                                    <label for="sexo">Sexo</label>
+                                    <select name="sexo" class="campo" required>
+                                        <option value="masculino">Masculino</option>
+                                        <option value="feminino">Feminino</option>
+                                    </select>
                                 </div>
                             </div>
                         </div>

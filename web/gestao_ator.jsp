@@ -99,12 +99,10 @@
             $('#modalEditar').on('show.bs.modal', function (e) {
                 var id = $(e.relatedTarget).data('id');
                 var nome = $(e.relatedTarget).data('nome');
-//                var route = $(e.relatedTarget).data('route') + id + '&nome=';
                 var modal = $(this);
 
                 modal.find('#nome-autor').val(nome);
                 modal.find('#id').val(id);
-//                modal.find('.modal-footer .btn-primary').attr("onclick", "location.href='${pageContext.request.contextPath}"+route+"'");
             });
         </script>
         ${msg};

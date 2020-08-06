@@ -18,4 +18,14 @@ public class AplCadastrarItem extends AplCadastrar<Item>{
         Titulo titulo = daoTitulo.getById(idTitulo);
         dao.inserir(new Item(numSerie, dtAquisicao, tipo, titulo)); 
     }
+    
+    public Item alterar(int id, int numSerie, Date dtAquisicao, String tipo, int idTitulo) {
+        Titulo titulo = daoTitulo.getById(idTitulo);
+        Item item = dao.getById(id); 
+        item.setNumSerie(numSerie);
+        item.setDtAquisicao(dtAquisicao);
+        item.setTipoItem(tipo);
+        item.setTitulo(titulo);
+         return dao.alterar(item);
+    }
 }

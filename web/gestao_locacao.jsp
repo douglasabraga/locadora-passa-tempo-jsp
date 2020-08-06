@@ -77,7 +77,14 @@
                                         <td><%=locacao.getDtLocacao()%></td>
                                         <td><%=locacao.getDtDevolucaoPrevista()%></td>
                                         <td class="text-center">
-                                            <button type="button" class="btn btn-warning">
+                                            <button type="button" class="btn btn-warning"
+                                                data-toggle="modal"
+                                                data-target="#modalEditar"
+                                                data-id="<%=locacao.getId()%>"
+                                                data-cliente="<%=locacao.getCliente().getId()%>"
+                                                data-item="<%=locacao.getItem().getId()%>"
+                                                data-valor="<%=locacao.getItem().getTitulo().getClasse().getValor()%>"
+                                                data-data="<%=locacao.getDtDevolucaoPrevista()%>">
                                                 <i class="fa fa-edit"></i>
                                             </button>
                                             <button type="button" class="btn btn-danger"
@@ -98,10 +105,26 @@
                 </div>
             </div>
         </section>
-       
+        <%@include  file="includes/modais/modal_editar_locacao.jsp"%>
         <%@include  file="includes/modais/modal_excluir.jsp"%>
         <%@include  file="includes/modais/modal_msg.jsp"%>
         <%@include  file="includes/scriptsJs.jsp"%>
+        <script>
+            $('#modalEditar').on('show.bs.modal', function (e) {
+                var id = $(e.relatedTarget).data('id');
+                var cliente = $(e.relatedTarget).data('cliente');
+                var item = $(e.relatedTarget).data('item');
+                var valor = $(e.relatedTarget).data('valor');
+                var data = $(e.relatedTarget).data('data');
+                var modal = $(this);
+
+                modal.find('#id').val(id);
+                modal.find('#cliente').val(cliente);
+                modal.find('#item').val(item);
+                modal.find('#valor').val(valor);
+                modal.find('#data').val(data);
+            });
+        </script>
         ${msg};
    
     </body>

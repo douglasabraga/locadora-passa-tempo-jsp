@@ -40,7 +40,23 @@ public class CrtCadastrarItem extends HttpServlet {
                 }
                 break;
 
-            case "alteraritem":
+            case "alterar":
+                {
+                    try {
+                        if(apl.alterar(Integer.parseInt(request.getParameter("id")),
+                                Integer.parseInt(request.getParameter("numero")),
+                                new SimpleDateFormat("yyyy-MM-dd").parse(request.getParameter("data")),
+                                request.getParameter("tipo"),
+                                Integer.parseInt(request.getParameter("titulo"))) == null) {
+                            msge =  msgFront.msgErro;
+                        } else {
+                            msge =  msgFront.msgSucesso;
+                        }
+                        request.setAttribute("msg", msge);
+                    } catch (ParseException ex) {
+                        System.out.println("Error!" + ex);
+                    }
+                }
                 break;
 
             case "excluiritem":
